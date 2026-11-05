@@ -28,13 +28,9 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.DriveCommands;
-import frc.robot.commands.RobotCommands;
 import frc.robot.generated.TunerConstants;
 import frc.robot.lib.BLine.FollowPath;
 import frc.robot.lib.BLine.Path;
-import frc.robot.subsystems.climb.Climb;
-import frc.robot.subsystems.climb.ClimbIO;
-import frc.robot.subsystems.climb.ClimbIOSim;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.drive.DriveConstants;
 import frc.robot.subsystems.drive.GyroIO;
@@ -42,29 +38,6 @@ import frc.robot.subsystems.drive.GyroIOPigeon2;
 import frc.robot.subsystems.drive.ModuleIO;
 import frc.robot.subsystems.drive.ModuleIOSim;
 import frc.robot.subsystems.drive.ModuleIOTalonFX;
-import frc.robot.subsystems.intakePivot.IntakePivot;
-import frc.robot.subsystems.intakePivot.IntakePivotIO;
-import frc.robot.subsystems.intakePivot.IntakePivotIOSim;
-import frc.robot.subsystems.rollers.intakerollers.IntakeRollers;
-import frc.robot.subsystems.rollers.intakerollers.IntakeRollersIO;
-import frc.robot.subsystems.rollers.intakerollers.IntakeRollersIOSim;
-import frc.robot.subsystems.rollers.kicker.Kicker;
-import frc.robot.subsystems.rollers.kicker.Kicker.KickerState;
-import frc.robot.subsystems.rollers.kicker.KickerIO;
-import frc.robot.subsystems.rollers.kicker.KickerIOSim;
-import frc.robot.subsystems.rollers.spindexer.Spindexer;
-import frc.robot.subsystems.rollers.spindexer.SpindexerIO;
-import frc.robot.subsystems.rollers.spindexer.SpindexerIOSim;
-import frc.robot.subsystems.shooter.Shooter;
-import frc.robot.subsystems.shooter.flywheels.Flywheels;
-import frc.robot.subsystems.shooter.flywheels.FlywheelsIO;
-import frc.robot.subsystems.shooter.flywheels.FlywheelsIOSim;
-import frc.robot.subsystems.shooter.hood.Hood;
-import frc.robot.subsystems.shooter.hood.HoodIO;
-import frc.robot.subsystems.shooter.hood.HoodIOSim;
-import frc.robot.subsystems.shooter.turret.Turret;
-import frc.robot.subsystems.shooter.turret.TurretIO;
-import frc.robot.subsystems.shooter.turret.TurretIOSim;
 import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.vision.VisionIO;
 import frc.robot.subsystems.vision.VisionIOLimelight;
@@ -83,15 +56,6 @@ import org.littletonrobotics.junction.networktables.LoggedNetworkBoolean;
 public class RobotContainer {
   // Subsystems
   private final Drive drive;
-  private final Spindexer spindexer;
-  private final Climb climb;
-  private final Flywheels flywheels;
-  private final IntakePivot intakePivot;
-  private final IntakeRollers intakeRollers;
-  private final Turret turret;
-  private final Shooter shooter;
-  private final Hood hood;
-  private final Kicker kicker;
   private final Vision vision;
 
   // Non-subsystems
@@ -152,14 +116,6 @@ public class RobotContainer {
         //         new ModuleIO() {},
         //         new ModuleIO() {},
         //         poseManager);
-        spindexer = new Spindexer(new SpindexerIO() {});
-        climb = new Climb(new ClimbIO() {});
-        intakePivot = new IntakePivot(new IntakePivotIO() {});
-        intakeRollers = new IntakeRollers(new IntakeRollersIO() {});
-        flywheels = new Flywheels(new FlywheelsIO() {});
-        turret = new Turret(new TurretIO() {});
-        hood = new Hood(new HoodIO() {});
-        kicker = new Kicker(new KickerIO() {});
 
         // * working ones below this line
         drive =
@@ -170,14 +126,6 @@ public class RobotContainer {
                 new ModuleIOTalonFX(TunerConstants.BackLeft),
                 new ModuleIOTalonFX(TunerConstants.BackRight),
                 poseManager);
-        // spindexer = new Spindexer(new SpindexerIOTalonFX());
-        // climb = new Climb(new ClimbIOTalonFX());
-        // intakePivot = new IntakePivot(new IntakePivotIOTalon());
-        // intakeRollers = new IntakeRollers(new IntakeRollersIOTalonFX());
-        // flywheels = new Flywheels(new FlywheelsIOTalonFX());
-        // turret = new Turret(new TurretIOTalonFX());
-        // hood = new Hood(new HoodIOTalonFX());
-        // kicker = new Kicker(new KickerIOTalonFX());
 
         // vision = new Vision(poseManager, new VisionIO() {});
         vision =
@@ -186,7 +134,6 @@ public class RobotContainer {
                 new VisionIOLimelight(portFore),
                 new VisionIOLimelight(portAft),
                 new VisionIOLimelight(starboardAft));
-        shooter = new Shooter(flywheels, turret, hood, poseManager, fuelSim);
         break;
 
       case SIM:
@@ -199,16 +146,7 @@ public class RobotContainer {
                 new ModuleIOSim(TunerConstants.BackLeft),
                 new ModuleIOSim(TunerConstants.BackRight),
                 poseManager);
-        spindexer = new Spindexer(new SpindexerIOSim());
-        climb = new Climb(new ClimbIOSim());
-        intakePivot = new IntakePivot(new IntakePivotIOSim());
-        intakeRollers = new IntakeRollers(new IntakeRollersIOSim());
-        flywheels = new Flywheels(new FlywheelsIOSim());
-        turret = new Turret(new TurretIOSim());
-        hood = new Hood(new HoodIOSim());
-        kicker = new Kicker(new KickerIOSim());
         vision = new Vision(poseManager, new VisionIO() {});
-        shooter = new Shooter(flywheels, turret, hood, poseManager, fuelSim);
 
         fuelSim.spawnStartingFuel(); // spawns fuel in the depots and neutral zone
         // Register a robot for collision with fuel
@@ -229,27 +167,6 @@ public class RobotContainer {
         double maxX = Units.inchesToMeters(25.548604);
         double minY = Units.inchesToMeters(-12.625);
         double maxY = Units.inchesToMeters(12.625);
-
-        fuelSim.registerIntake(
-            minX,
-            maxX,
-            minY,
-            maxY, // robot-centric coordinates for bounding box in meters
-            () -> {
-              return intakePivot.intakeDown();
-            }, // (optional) BooleanSupplier for whether the intake should be active at
-            // a given moment
-            () -> {
-              fuelCount++;
-              Logger.recordOutput("Controls/Fuel Count", fuelCount);
-            }); // (optional) Runnable called whenever a fuel is intaked
-
-        fuelSim.setSubticks(
-            5); // sets the number of physics iterations to perform per 20ms loop. Default = 5
-
-        fuelSim
-            .enableAirResistance(); // an additional drag force will be applied to fuel in physics
-        // update step
         break;
 
       default:
@@ -262,16 +179,7 @@ public class RobotContainer {
                 new ModuleIO() {},
                 new ModuleIO() {},
                 poseManager);
-        spindexer = new Spindexer(new SpindexerIO() {});
-        climb = new Climb(new ClimbIO() {});
-        intakePivot = new IntakePivot(new IntakePivotIO() {});
-        intakeRollers = new IntakeRollers(new IntakeRollersIO() {});
-        flywheels = new Flywheels(new FlywheelsIO() {});
-        turret = new Turret(new TurretIO() {});
-        hood = new Hood(new HoodIO() {});
-        kicker = new Kicker(new KickerIO() {});
         vision = new Vision(poseManager, new VisionIO() {});
-        shooter = new Shooter(flywheels, turret, hood, poseManager, fuelSim);
         break;
     }
 
@@ -401,11 +309,6 @@ public class RobotContainer {
             () -> -controller.getRightX(),
             poseManager,
             demoMode::get));
-    spindexer.setDefaultCommand(spindexer.stop());
-    climb.setDefaultCommand(climb.idle());
-    intakePivot.setDefaultCommand(intakePivot.raise());
-    intakeRollers.setDefaultCommand(intakeRollers.stop());
-    kicker.setDefaultCommand(kicker.setState(KickerState.STOP));
 
     // Switch to X pattern when X button is pressed
     controller.x().onTrue(Commands.runOnce(drive::stopWithX, drive));
@@ -422,53 +325,6 @@ public class RobotContainer {
                     drive)
                 .ignoringDisable(true));
 
-    // controller.povUp().whileTrue(DriveCommands.povDrive(drive, poseManager, false));
-    // controller.povDown().whileTrue(DriveCommands.povDrive(drive, poseManager, true));
-
-    // Climbing
-    controller.povUp().whileTrue(climb.upVolts());
-    controller.povDown().whileTrue(climb.downVolts());
-
-    // Intaking
-    controller.leftBumper().toggleOnTrue(RobotCommands.intake(intakeRollers, intakePivot));
-    controller.leftTrigger().whileTrue(RobotCommands.jork(intakeRollers, intakePivot));
-    // controller.leftTrigger().onFalse(driverIntakeCmd);
-    controller.rightTrigger().whileTrue(RobotCommands.unjam(spindexer, kicker, shooter));
-
-    // Shooting
-    controller
-        .rightBumper()
-        .whileTrue(
-            RobotCommands.readyThenShoot(shooter, kicker, spindexer, () -> poseManager.getPose()));
-    controller.rightBumper().onFalse(RobotCommands.stopShoot(shooter, kicker, spindexer));
-    // controller.rightBumper().whileTrue(shooter.decrementTurretAngle());
-
-    controller.a().onTrue(shooter.overrideSetScoring(true));
-    controller.b().onTrue(shooter.overrideSetScoring(false));
-    controller.a().or(controller.b()).debounce(1.5).onTrue(shooter.permaDisableAutoFeedvsScore());
-
-    // controller
-    //     .rightTrigger()
-    //     .whileTrue(
-    //         DriveCommands.autoAim(
-    //             drive, () -> -controller.getLeftY(), () -> -controller.getLeftX(), poseManager));
-
-    controller.y().whileTrue(RobotCommands.unjam(spindexer, kicker, shooter));
-
-    controller.y().onTrue(shooter.setHoodIsSafe(false));
-    controller.y().onFalse(shooter.setHoodIsSafe(true));
-
-    // * Automatic shooting
-    // new Trigger(() -> shooter.readyToShoot())
-    //     .toggleOnTrue(
-    //         shooter.getShooting()
-    //             ? RobotCommands.stopShoot(shooter, kicker, spindexer)
-    //             : RobotCommands.readyThenShoot(shooter, kicker, spindexer));
-
-    // Current zeroing
-    controller.povRight().onTrue(intakePivot.runCurrentZeroing());
-    controller.povLeft().onTrue(hood.runCurrentZeroing());
-
     // Controller rumble when 5 seconds are left in the current shift
     new Trigger(
             () ->
@@ -480,10 +336,6 @@ public class RobotContainer {
                     () -> controller.setRumble(GenericHID.RumbleType.kBothRumble, 0.5),
                     () -> controller.setRumble(GenericHID.RumbleType.kBothRumble, 0.0))
                 .withTimeout(0.50));
-
-    // stop intake from raising automatically
-    new Trigger(() -> DriverStation.isTeleopEnabled() && !DriverStation.isFMSAttached())
-        .onTrue(intakeRollers.stop().alongWith(intakePivot.idle()));
   }
 
   /**
@@ -495,8 +347,4 @@ public class RobotContainer {
   //   return autos.getAutonomousCommand();
   // }
 
-  public Command testInit() {
-    return RobotCommands.test(
-        shooter, kicker, spindexer, intakeRollers, intakePivot, intakeRollers);
-  }
 }

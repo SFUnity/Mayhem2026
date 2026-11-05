@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import static frc.robot.Constants.*;
-import static frc.robot.subsystems.shooter.turret.TurretConstants.*;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.ProfiledPIDController;
@@ -25,9 +24,7 @@ import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import frc.robot.FieldConstants;
 import frc.robot.subsystems.drive.Drive;
-import frc.robot.util.AllianceFlipUtil;
 import frc.robot.util.LoggedTunableNumber;
 import frc.robot.util.PoseManager;
 import java.text.DecimalFormat;
@@ -261,37 +258,6 @@ public class DriveCommands {
         // Reset PID controller when command starts
         .beforeStarting(() -> angleController.reset(poseManager.getRotation().getRadians()))
         .withName("joystickDriveAtAngle");
-  }
-
-  // jank af autoaim bc we fucked turret (mech fault seans great at making turret) so sean cooked
-  // this up on 6 hrs of sleep at midnight
-  public static Command autoAim(
-      Drive drive, DoubleSupplier xSupplier, DoubleSupplier ySupplier, PoseManager poseManager) {
-    return joystickDriveAtAngle(
-        drive,
-        xSupplier,
-        ySupplier,
-        () ->
-            new Rotation2d(
-                Units.degreesToRadians(
-                    AllianceFlipUtil.apply(FieldConstants.Hub.topCenterPoint.toTranslation2d())
-                            .minus(
-                                poseManager
-                                    .getPose()
-                                    .transformBy(
-                                        new Transform2d(
-                                            turretCenter.getTranslation().toTranslation2d(),
-                                            poseManager
-                                                .getRotation())) // bc using posemanager but also
-                                    // rotating the bot, its a bit
-                                    // slow. need to work on in the
-                                    // morning
-                                    .getTranslation())
-                            .getAngle()
-                            .getDegrees()
-                        // - poseManager.getRotation().getDegrees()
-                        - turretOffsetDegs)),
-        poseManager);
   }
 
   public static Command snakeDrive(
