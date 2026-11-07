@@ -15,8 +15,11 @@
  },
  "params":{
   "waypoints":[
-    {"x":{"exp":"1.7357127666473389 m", "val":1.7357127666473389}, "y":{"exp":"1.9604194164276123 m", "val":1.9604194164276123}, "heading":{"exp":"0 deg", "val":0.0}, "intervals":40, "split":false, "fixTranslation":true, "fixHeading":true, "overrideIntervals":false},
-    {"x":{"exp":"2.845284938812256 m", "val":2.845284938812256}, "y":{"exp":"2.0759997367858887 m", "val":2.0759997367858887}, "heading":{"exp":"0 deg", "val":0.0}, "intervals":40, "split":false, "fixTranslation":true, "fixHeading":true, "overrideIntervals":false}],
+    {"x":{"exp":"13.5 in", "val":0.3429}, "y":{"exp":"1.4111287593841553 m", "val":1.4111287593841553}, "heading":{"exp":"StartLineCenter.heading", "val":0.0}, "intervals":21, "split":false, "fixTranslation":true, "fixHeading":true, "overrideIntervals":false},
+    {"x":{"exp":"BalanceBeamCenter.x", "val":2.6416}, "y":{"exp":"BalanceBeamCenter.y", "val":1.6967199999999998}, "heading":{"exp":"BalanceBeamCenter.heading", "val":0.0}, "intervals":19, "split":false, "fixTranslation":true, "fixHeading":true, "overrideIntervals":false},
+    {"x":{"exp":"MiddleFieldBlocks.x", "val":4.41706}, "y":{"exp":"MiddleFieldBlocks.y", "val":2.1844}, "heading":{"exp":"MiddleFieldBlocks.heading", "val":0.0}, "intervals":40, "split":false, "fixTranslation":true, "fixHeading":true, "overrideIntervals":false}],
+    {"x":{"exp":"StartLineCenter.x", "val":0.3429}, "y":{"exp":"StartLineCenter.y", "val":1.39573}, "heading":{"exp":"StartLineCenter.heading", "val":0.0}, "intervals":27, "split":false, "fixTranslation":true, "fixHeading":true, "overrideIntervals":false},
+    {"x":{"exp":"165 in", "val":4.191}, "y":{"exp":"84 in", "val":2.1336}, "heading":{"exp":"0 deg", "val":0.0}, "intervals":40, "split":false, "fixTranslation":true, "fixHeading":false, "overrideIntervals":false}],
   "constraints":[
     {"from":"first", "to":null, "data":{"type":"StopPoint", "props":{}}, "enabled":true},
     {"from":"last", "to":null, "data":{"type":"StopPoint", "props":{}}, "enabled":true},
