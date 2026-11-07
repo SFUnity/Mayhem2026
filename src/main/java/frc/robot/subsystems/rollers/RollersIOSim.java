@@ -12,7 +12,11 @@ public class RollersIOSim implements RollersIO {
     }
 
 @Override
-    public void updateInputs(RollerIOInputs inputs) {
+    public void updateInputs(RollersIOInputs inputs) {
+        inputs.rollerVolts = rollersVolts;
+        inputs.motorSpeed = motorSpeed;
+        inputs.statorCurrent = statorCurrent;
+        inputs.supplyCurrent = supplyCurrent;
 
     }
 

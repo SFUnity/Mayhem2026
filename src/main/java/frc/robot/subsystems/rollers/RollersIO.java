@@ -5,8 +5,8 @@ import org.littletonrobotics.junction.AutoLog;
 public interface RollersIO {
 
     @AutoLog
-    public static class RollerIOInputs {
-        double rollerVolts = 0.0;
+    public static class RollersIOInputs {
+        double rollersVolts = 0.0;
         double statorCurrent = 0.0;
         double supplyCurrent = 0.0;
         double motorSpeed = 0.0;
