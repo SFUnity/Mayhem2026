@@ -9,10 +9,11 @@ public interface RollersIO {
         double rollerVolts = 0.0;
         double statorCurrent = 0.0;
         double supplyCurrent = 0.0;
-        double moterSpeed = 0.0;
+        double motorSpeed = 0.0;
     }
 
   public default void runVolts(double volts) {}
+    public default void updateInputs(RollerIOInputs inputs) {}
 
   public default void stop() {}
 }
