@@ -3,8 +3,65 @@
  "version":2,
  "type":"Swerve",
  "variables":{
-  "expressions":{},
+  "expressions":{
+   "FieldLength":{
+    "dimension":"Length",
+    "var":{
+     "exp":"9.319876692694146 m",
+     "val":9.319876692694146
+    }
+   },
+   "FieldStartPointX":{
+    "dimension":"Number",
+    "var":{
+     "exp":"-0.17587669269414619",
+     "val":-0.1758766926941462
+    }
+   },
+   "FieldStartPointY":{
+    "dimension":"Number",
+    "var":{
+     "exp":"-0.17587669269414619",
+     "val":-0.1758766926941462
+    }
+   },
+   "FieldWidth":{
+    "dimension":"Length",
+    "var":{
+     "exp":"4.5539623679339885 m",
+     "val":4.5539623679339885
+    }
+   }
+  },
   "poses":{
+   "BalanceBeamCenter":{
+    "x":{
+     "exp":"104 in",
+     "val":2.6416
+    },
+    "y":{
+     "exp":"66.8 in",
+     "val":1.6967199999999998
+    },
+    "heading":{
+     "exp":"0 rad",
+     "val":0.0
+    }
+   },
+   "MiddleFieldBlocks":{
+    "x":{
+     "exp":"173.9 in",
+     "val":4.41706
+    },
+    "y":{
+     "exp":"86 in",
+     "val":2.1844
+    },
+    "heading":{
+     "exp":"0 rad",
+     "val":0.0
+    }
+   },
    "StartLineCenter":{
     "x":{
      "exp":"13.5 in",
