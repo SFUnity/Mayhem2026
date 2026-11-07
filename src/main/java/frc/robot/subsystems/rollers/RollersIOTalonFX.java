@@ -7,6 +7,7 @@ import com.ctre.phoenix6.hardware.TalonFX;
 public class RollersIOTalonFX implements RollersIO{
     private final TalonFX rollerTalonFX = new TalonFX(RollersConstants.rollerID);
     private final VoltageOut voltageOut = new VoltageOut(0.0);
+    private final VoltageOut stopOut = new VoltageOut(0.0);
 
     @Override
     public void updateInputs(RollersIOInputs inputs) {
@@ -21,4 +22,10 @@ public class RollersIOTalonFX implements RollersIO{
         voltageOut.Output = volts;
         rollerTalonFX.setControl(voltageOut);
       }
+
+    @Override
+    public void stop(){
+        rollerTalonFX.setControl (stopOut);
+        // or voltageOut.Output = 0.0; rollerTalonFX.setControl(voltageOut);
+    }
 }
