@@ -1,5 +1,7 @@
 package frc.robot.subsystems.rollers;
 
-public class RollersIOTalonFX implements RollersIO{
+import com.ctre.phoenix6.hardware.TalonFX;
 
+public class RollersIOTalonFX implements RollersIO{
+    private final TalonFX rollerTalonFX = new TalonFX(RollersConstants.rollerID);
 }
