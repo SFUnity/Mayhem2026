@@ -1,10 +1,25 @@
 {
- "name":"Untitled",
+ "name":"Autos",
  "version":2,
  "type":"Swerve",
  "variables":{
   "expressions":{},
-  "poses":{}
+  "poses":{
+   "StartLineCenter":{
+    "x":{
+     "exp":"13.5 in",
+     "val":0.3429
+    },
+    "y":{
+     "exp":"54.95 in",
+     "val":1.39573
+    },
+    "heading":{
+     "exp":"0 rad",
+     "val":0.0
+    }
+   }
+  }
  },
  "config":{
   "frontLeft":{
@@ -57,16 +72,16 @@
   },
   "bumper":{
    "front":{
-    "exp":"16 in",
-    "val":0.4064
+    "exp":"18 in",
+    "val":0.4572
    },
    "side":{
     "exp":"16 in",
     "val":0.4064
    },
    "back":{
-    "exp":"16 in",
-    "val":0.4064
+    "exp":"18 in",
+    "val":0.4572
    }
   },
   "differentialTrackWidth":{
