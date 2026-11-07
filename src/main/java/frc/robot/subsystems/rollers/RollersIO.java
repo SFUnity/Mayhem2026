@@ -12,7 +12,7 @@ public interface RollersIO {
     double motorSpeed = 0.0;
   }
 
-  public void updateInputs(RollersIOInputs inputs);
+  public default void updateInputs(RollersIOInputs inputs) {}
 
   public default void runVolts(double volts) {}
 

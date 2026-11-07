@@ -15,4 +15,14 @@ public class RollersIOSim implements RollersIO {
     inputs.statorCurrent = statorCurrent;
     inputs.supplyCurrent = supplyCurrent;
   }
+
+  @Override
+  public void runVolts(double volts) {
+    rollersVolts = volts;
+  }
+
+  @Override
+  public void stop() {
+    rollersVolts = 0.0;
+  }
 }
