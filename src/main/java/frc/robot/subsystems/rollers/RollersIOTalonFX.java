@@ -1,5 +1,6 @@
 package frc.robot.subsystems.rollers;
 
+<<<<<<< HEAD
 import com.ctre.phoenix6.controls.DutyCycleOut;
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
@@ -28,4 +29,10 @@ public class RollersIOTalonFX implements RollersIO{
         rollerTalonFX.setControl (stopOut);
         // or voltageOut.Output = 0.0; rollerTalonFX.setControl(voltageOut);
     }
+=======
+import com.ctre.phoenix6.hardware.TalonFX;
+
+private class RollersIOTalonFX implements RollersIO {
+    private TalonFX rollerTalonFX = new TalonFX(0);
+>>>>>>> ddf6ac68 (started TalonFX for rollers)
 }
