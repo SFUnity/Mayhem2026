@@ -2,27 +2,27 @@ package frc.robot.subsystems.rollers;
 
 public class RollersIOSim implements RollersIO {
   private double rollersVolts = 0.0;
-  private double statorCurrent = 0.0;
-  private double supplyCurrent = 0.0;
-  private double motorSpeed = 0.0;
+  private double rollersStatorCurrent = 0.0;
+  private double rollerSupplyCurrent = 0.0;
+  private double rollerSpeed = 0.0;
 
   public RollersIOSim() {}
 
   @Override
   public void updateInputs(RollersIOInputs inputs) {
-    inputs.rollersVolts = rollersVolts;
-    inputs.motorSpeed = motorSpeed;
-    inputs.statorCurrent = statorCurrent;
-    inputs.supplyCurrent = supplyCurrent;
+    inputs.rollerSpeed = this.rollerSpeed;
+    inputs.rollersVolts = this.rollersVolts;
+    inputs.rollersStatorCurrent = this.rollersStatorCurrent;
+    inputs.rollersSupplyCurrent = this.rollerSupplyCurrent;
   }
 
   @Override
   public void runVolts(double volts) {
-    rollersVolts = volts;
+    this.rollersVolts = volts;
   }
 
   @Override
   public void stop() {
-    rollersVolts = 0.0;
+    this.rollersVolts = 0.0;
   }
 }

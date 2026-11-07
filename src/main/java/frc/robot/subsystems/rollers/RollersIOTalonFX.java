@@ -34,5 +34,4 @@ import com.ctre.phoenix6.hardware.TalonFX;
 
 private class RollersIOTalonFX implements RollersIO {
     private TalonFX rollerTalonFX = new TalonFX(0);
->>>>>>> ddf6ac68 (started TalonFX for rollers)
 }
