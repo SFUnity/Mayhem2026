@@ -26,10 +26,10 @@ public class Rollers extends SubsystemBase {
         io.stop();
         break;
       case INTAKE:
-        io.runVolts(5); // magic numbers
+        io.runVolts(RollersConstants.intakeVolts); // magic numbers
         break;
       case OUTTAKE:
-        io.runVolts(-5); // magic numbers
+        io.runVolts(-RollersConstants.intakeVolts); // magic numbers
         break;
     }
   }
