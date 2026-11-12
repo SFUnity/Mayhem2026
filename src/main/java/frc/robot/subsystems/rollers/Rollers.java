@@ -26,8 +26,8 @@ public class Rollers extends SubsystemBase {
         io.stop();
         break;
       case INTAKE:
-        io.runVolts(RollersConstants.intakeVolts); 
-        if(inputs.statorCurrent > RollersConstants.intakeStatorCurrentThreshold){
+        io.runVolts(RollersConstants.intakeVolts);
+        if (inputs.statorCurrent > RollersConstants.intakeStatorCurrentThreshold) {
           this.state = RollersState.STOP;
         }
         break;
