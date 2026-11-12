@@ -139,7 +139,7 @@ public class RobotContainer {
                 new VisionIOLimelight(portFore),
                 new VisionIOLimelight(portAft),
                 new VisionIOLimelight(starboardAft));
-         rollers = new Rollers(new RollersIOTalonFX());
+        rollers = new Rollers(new RollersIOTalonFX());
         break;
 
       case SIM:
@@ -153,7 +153,7 @@ public class RobotContainer {
                 new ModuleIOSim(TunerConstants.BackRight),
                 poseManager);
         vision = new Vision(poseManager, new VisionIO() {});
-        rollers = new Rollers (new RollersIOSim());
+        rollers = new Rollers(new RollersIOSim());
 
         fuelSim.spawnStartingFuel(); // spawns fuel in the depots and neutral zone
         // Register a robot for collision with fuel
