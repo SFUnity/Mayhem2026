@@ -7,15 +7,15 @@ import frc.robot.subsystems.rollers.Rollers;
 import frc.robot.subsystems.rollers.Rollers.RollersState;
 
 public class RobotCommands {
-  public static Command Intake(Rollers rollers) {
+  public static Command intake(Rollers rollers) {
     return runOnce(() -> rollers.setState(RollersState.INTAKE), rollers);
   }
 
-  public static Command StopIntake(Rollers rollers) {
+  public static Command stopIntake(Rollers rollers) {
     return runOnce(() -> rollers.setState(RollersState.STOP), rollers);
   }
 
-  public static Command Outtake(Rollers rollers) {
+  public static Command outtake(Rollers rollers) {
     return runOnce(() -> rollers.setState(RollersState.OUTTAKE), rollers);
   }
 }

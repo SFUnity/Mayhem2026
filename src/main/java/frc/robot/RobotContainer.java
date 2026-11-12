@@ -28,6 +28,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.DriveCommands;
+import frc.robot.commands.RobotCommands;
 import frc.robot.generated.TunerConstants;
 import frc.robot.lib.BLine.FollowPath;
 import frc.robot.lib.BLine.Path;
@@ -321,7 +322,10 @@ public class RobotContainer {
 
     // Switch to X pattern when X button is pressed
     controller.x().onTrue(Commands.runOnce(drive::stopWithX, drive));
-
+    controller.rightTrigger().onTrue(RobotCommands.intake(rollers));
+    controller.rightTrigger().onFalse(RobotCommands.stopIntake(rollers));
+    controller.leftTrigger().onTrue(RobotCommands.outtake(rollers));
+    controller.leftTrigger().onFalse(RobotCommands.stopIntake(rollers));
     // Reset gyro to 0° when start or back button is pressed
     controller
         .start()
