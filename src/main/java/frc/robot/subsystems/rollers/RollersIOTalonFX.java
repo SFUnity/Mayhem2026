@@ -13,8 +13,9 @@ public class RollersIOTalonFX implements RollersIO{
     private final TalonFXConfiguration configs = new TalonFXConfiguration();
 
     public RollersIOTalonFX() {
-        configs.CurrentLimits.StatorCurrentLimit = 120;
+        configs.CurrentLimits.SupplyCurrentLimit = 40;
         configs.CurrentLimits.StatorCurrentLimitEnable = true;
+        rollerTalonFX.getConfigurator().apply(configs);
     }
 
     @Override
