@@ -26,15 +26,22 @@ public class Rollers extends SubsystemBase {
         io.stop();
         break;
       case INTAKE:
-        io.runVolts(RollersConstants.intakeVolts); // magic numbers
+        io.runVolts(RollersConstants.intakeVolts); 
+        if(inputs.statorCurrent > RollersConstants.intakeStatorCurrentThreshold){
+          this.state = RollersState.STOP;
+        }
         break;
       case OUTTAKE:
-        io.runVolts(-RollersConstants.intakeVolts); // magic numbers
+        io.runVolts(-RollersConstants.intakeVolts);
         break;
     }
   }
 
   public void setState(RollersState state) {
     this.state = state;
+  }
+
+  public RollersState getState() {
+    return this.state;
   }
 }
