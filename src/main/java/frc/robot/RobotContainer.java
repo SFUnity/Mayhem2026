@@ -38,6 +38,10 @@ import frc.robot.subsystems.drive.GyroIOPigeon2;
 import frc.robot.subsystems.drive.ModuleIO;
 import frc.robot.subsystems.drive.ModuleIOSim;
 import frc.robot.subsystems.drive.ModuleIOTalonFX;
+import frc.robot.subsystems.rollers.Rollers;
+import frc.robot.subsystems.rollers.RollersIO;
+import frc.robot.subsystems.rollers.RollersIOSim;
+import frc.robot.subsystems.rollers.RollersIOTalonFX;
 import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.vision.VisionIO;
 import frc.robot.subsystems.vision.VisionIOLimelight;
@@ -57,6 +61,7 @@ public class RobotContainer {
   // Subsystems
   private final Drive drive;
   private final Vision vision;
+  private final Rollers rollers;
 
   // Non-subsystems
   // private final Autos autos;
@@ -118,6 +123,7 @@ public class RobotContainer {
         //         poseManager);
 
         // * working ones below this line
+
         drive =
             new Drive(
                 new GyroIOPigeon2(),
@@ -134,6 +140,7 @@ public class RobotContainer {
                 new VisionIOLimelight(portFore),
                 new VisionIOLimelight(portAft),
                 new VisionIOLimelight(starboardAft));
+        rollers = new Rollers(new RollersIOTalonFX());
         break;
 
       case SIM:
@@ -147,6 +154,7 @@ public class RobotContainer {
                 new ModuleIOSim(TunerConstants.BackRight),
                 poseManager);
         vision = new Vision(poseManager, new VisionIO() {});
+        rollers = new Rollers(new RollersIOSim());
 
         fuelSim.spawnStartingFuel(); // spawns fuel in the depots and neutral zone
         // Register a robot for collision with fuel
@@ -180,6 +188,7 @@ public class RobotContainer {
                 new ModuleIO() {},
                 poseManager);
         vision = new Vision(poseManager, new VisionIO() {});
+        rollers = new Rollers(new RollersIO() {});
         break;
     }
 
