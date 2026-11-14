@@ -7,7 +7,8 @@ import com.ctre.phoenix6.hardware.TalonFX;
 
 public class RollersIOTalonFX implements RollersIO {
   private final TalonFX rollerTalonFX = new TalonFX(RollersConstants.rollerID);
-  private final VoltageOut voltageOut = new VoltageOut(0.0);
+  private final VoltageOut voltageOut = new VoltageOut(0.0).withEnableFOC(true);
+  ;
   private final NeutralOut stopOut = new NeutralOut();
   private final TalonFXConfiguration configs = new TalonFXConfiguration();
 

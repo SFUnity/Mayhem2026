@@ -1,19 +1,17 @@
 package frc.robot.subsystems.pivot;
 
-import java.io.ObjectInputFilter.Config;
-
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.GravityTypeValue;
-
 import edu.wpi.first.math.util.Units;
 
 public class PivotIOTalonFX implements PivotIO {
   private final TalonFX pivot;
   private final TalonFXConfiguration config;
 
-  private final MotionMagicVoltage motionMagicVoltage = new MotionMagicVoltage(0.0).withEnableFOC(true);
+  private final MotionMagicVoltage motionMagicVoltage =
+      new MotionMagicVoltage(0.0).withEnableFOC(true);
 
   public PivotIOTalonFX() {
     pivot = new TalonFX(PivotConstants.motorID);
@@ -41,7 +39,7 @@ public class PivotIOTalonFX implements PivotIO {
   }
 
   @Override
-public void requestMotorAngle(double degrees) {
+  public void requestMotorAngle(double degrees) {
     motionMagicVoltage.Position = Units.degreesToRotations(degrees);
     pivot.setControl(motionMagicVoltage);
   }
