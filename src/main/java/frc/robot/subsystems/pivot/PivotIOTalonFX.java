@@ -4,6 +4,8 @@ import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import edu.wpi.first.math.util.Units;
+
 
 public class PivotIOTalonFX implements PivotIO {
     private final TalonFX pivot;
@@ -19,7 +21,11 @@ public class PivotIOTalonFX implements PivotIO {
     // Implement the methods for TalonFX hardware here
     @Override
     public void updateInputs(PivotIOInputs inputs) {
-
+        inputs.pivotVolts = pivot.getMotorVoltage().getValueAsDouble();
+        inputs.pivotSpeed = pivot.getRotorVelocity().getValueAsDouble();
+        inputs.pivotDegrees = Units.rotationsToDegrees(pivot.getPosition().getValueAsDouble());
+        inputs.pivotSupplyCurrent = pivot.getSupplyCurrent().getValueAsDouble();
+        inputs.pivotStatorCurrent = pivot.getStatorCurrent().getValueAsDouble();
     }
 
 
