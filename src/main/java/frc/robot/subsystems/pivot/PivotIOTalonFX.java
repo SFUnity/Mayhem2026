@@ -1,6 +1,9 @@
 package frc.robot.subsystems.pivot;
 
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.controls.ControlRequest;
+import com.ctre.phoenix6.controls.DynamicMotionMagicVoltage;
+import com.ctre.phoenix6.controls.MotionMagicVoltage;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
@@ -8,8 +11,13 @@ import edu.wpi.first.math.util.Units;
 
 
 public class PivotIOTalonFX implements PivotIO {
+
     private final TalonFX pivot;
     private final TalonFXConfiguration config;
+
+    private final MotionMagicVoltage motionMagicVoltage = new MotionMagicVoltage(0.0);
+
+
 
     public PivotIOTalonFX() {
         pivot = new TalonFX(PivotConstants.motorID);
@@ -39,4 +47,15 @@ public class PivotIOTalonFX implements PivotIO {
         setEncoderAngle(PivotConstants.minAngleDegs);
     }
 
+    @Override
+    public void setMotorAngle(double degrees) {
+        motionMagicVoltage.withPosition(Units.degreesToRotations(degrees));
+        pivot.setControl(motionMagicVoltage);
+    }
 }
+ 
+
+    
+
+
+
