@@ -13,6 +13,7 @@ public class PivotIOTalonFX implements PivotIO {
     config = new TalonFXConfiguration();
     config.CurrentLimits.SupplyCurrentLimit = PivotConstants.supplyCurrentLimit;
     config.CurrentLimits.SupplyCurrentLimitEnable = true;
+    config.Feedback.SensorToMechanismRatio = PivotConstants.gearRatio;
     pivot.getConfigurator().apply(config);
   }
 
@@ -26,5 +27,12 @@ public class PivotIOTalonFX implements PivotIO {
   }
 
   @Override
-  public void setEncoderAngle(double degrees) {}
+  public void setEncoderAngle(double degrees) {
+    pivot.setPosition(Units.degreesToRotations(degrees));
+  }
+
+  @Override
+  public void resetEncoderAngle() {
+    setEncoderAngle(PivotConstants.minAngleDegs);
+  }
 }
