@@ -21,4 +21,3 @@ public interface PivotIO {
 
   public default void resetMotorAngle() {}
 }
- 
