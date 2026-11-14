@@ -5,6 +5,8 @@ import com.ctre.phoenix6.controls.NeutralOut;
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
 
+import frc.robot.subsystems.pivot.PivotConstants;
+
 public class RollersIOTalonFX implements RollersIO {
   private final TalonFX rollerTalonFX = new TalonFX(RollersConstants.rollerID);
   private final VoltageOut voltageOut = new VoltageOut(0.0);
@@ -14,6 +16,7 @@ public class RollersIOTalonFX implements RollersIO {
   public RollersIOTalonFX() {
     configs.CurrentLimits.StatorCurrentLimit = 40;
     configs.CurrentLimits.StatorCurrentLimitEnable = true;
+    configs.Feedback.SensorToMechanismRatio = PivotConstants.gearRatio;
     rollerTalonFX.getConfigurator().apply(configs);
   }
 

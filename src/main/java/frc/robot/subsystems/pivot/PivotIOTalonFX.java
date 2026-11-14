@@ -29,20 +29,14 @@ public class PivotIOTalonFX implements PivotIO {
     }
 
 
-
-    @Override
-    public void setMotorAngle(double degrees) {
-        // Set the motor angle using TalonFX
-    }
-
     @Override
     public void setEncoderAngle(double degrees) {
-        // Set the encoder angle using TalonFX
+        pivot.setPosition(Units.degreesToRotations(degrees));
     }
 
     @Override
     public void resetEncoderAngle() {
-        // Reset the encoder angle using TalonFX
+        setEncoderAngle(PivotConstants.minAngleDegs);
     }
 
 }
