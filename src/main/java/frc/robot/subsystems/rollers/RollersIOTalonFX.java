@@ -9,14 +9,13 @@ import frc.robot.subsystems.pivot.PivotConstants;
 
 public class RollersIOTalonFX implements RollersIO {
   private final TalonFX rollerTalonFX = new TalonFX(RollersConstants.rollerID);
-  private final VoltageOut voltageOut = new VoltageOut(0.0);
+  private final VoltageOut voltageOut = new VoltageOut(0.0).withEnableFOC(true);
   private final NeutralOut stopOut = new NeutralOut();
   private final TalonFXConfiguration configs = new TalonFXConfiguration();
 
   public RollersIOTalonFX() {
     configs.CurrentLimits.StatorCurrentLimit = 40;
     configs.CurrentLimits.StatorCurrentLimitEnable = true;
-    configs.Feedback.SensorToMechanismRatio = PivotConstants.gearRatio;
     rollerTalonFX.getConfigurator().apply(configs);
   }
 

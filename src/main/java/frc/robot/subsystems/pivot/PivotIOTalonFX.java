@@ -16,7 +16,7 @@ public class PivotIOTalonFX implements PivotIO {
     private final TalonFX pivot;
     private final TalonFXConfiguration config;
 
-    private final MotionMagicVoltage motionMagicVoltage = new MotionMagicVoltage(0.0);
+    private final MotionMagicVoltage motionMagicVoltage = new MotionMagicVoltage(0.0).withEnableFOC(true);
 
 
 
@@ -29,6 +29,7 @@ public class PivotIOTalonFX implements PivotIO {
         config.Slot0.GravityType = GravityTypeValue.Arm_Cosine;
         config.Slot0.kP = PivotConstants.kP;
         config.Slot0.kD = PivotConstants.kD;
+        config.Slot0.kV = PivotConstants.kV;  
         config.MotionMagic.MotionMagicAcceleration = PivotConstants.acceleration;
         config.MotionMagic.MotionMagicCruiseVelocity = PivotConstants.velocity;
         pivot.getConfigurator().apply(config);
