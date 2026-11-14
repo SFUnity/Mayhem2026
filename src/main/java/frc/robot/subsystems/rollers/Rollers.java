@@ -30,10 +30,10 @@ public class Rollers extends SubsystemBase {
         break;
       case INTAKE:
         io.runVolts(RollersConstants.intakeVolts);
+
         if (inputs.statorCurrent > RollersConstants.intakeStatorCurrentThreshold) {
           this.state = RollersState.STOP;
         }
-        break;
       case OUTTAKE:
         io.runVolts(-RollersConstants.intakeVolts);
         break;
@@ -45,6 +45,6 @@ public class Rollers extends SubsystemBase {
   }
 
   public RollersState getState() {
-    return this.state;
+    return state;
   }
 }
