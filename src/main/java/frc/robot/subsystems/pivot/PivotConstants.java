@@ -9,7 +9,11 @@ public class PivotConstants {
   public static final double minAngleDegs = 10;
   public static final double maxAngleDegs= 135;
   public static final double armLengthMeters = Units.inchesToMeters(15);
-  public static final double gearRatio = 45.0 * 12.0/34.0; 
+  public static final double gearRatio = 45.0 * 34.0/12.0; 
   public static final int motorID = 0;
   public static final double supplyCurrentLimit = 80.0;
+  public static final double kP = 0.1;
+  public static final double kD = 0.0;
+  public static final double acceleration = Units.degreesToRotations(45.0);
+  public static final double velocity = Units.degreesToRotations(45.0);
 }
