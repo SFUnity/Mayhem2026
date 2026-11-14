@@ -16,17 +16,17 @@ public class PivotIOSim implements PivotIO {
         inputs.pivotDegrees = this.pivotDegrees;
     }
     @Override
-    public void requestAngle(double volts) {
-        this.pivotVolts = volts;
+    public void setMotorAngle(double degrees) {
+        this.pivotDegrees = degrees;
     }
     
     @Override
-    public void setAngle(double degrees) {
+    public void setEncoderAngle(double degrees) {
         this.pivotDegrees = degrees;
     }
 
     @Override
-    public void resetAngle() {
-        this.pivotDegrees = 0.0;
+    public void resetEncoderAngle() {
+        setEncoderAngle(PivotConstants.minAngleDegs);
     }
 }
