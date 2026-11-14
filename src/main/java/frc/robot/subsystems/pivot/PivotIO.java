@@ -15,10 +15,10 @@ public interface PivotIO {
 
   public default void updateInputs(PivotIOInputs inputs) {}
 
-  public default void requestAngle(double volts) {}
+  public default void requestMotorAngle(double degrees) {}
 
-  public default void setAngle(double degrees) {}
+  public default void setEncoderAngle(double degrees) {}
 
-  public default void resetAngle() {}
+  public default void resetMotorAngle() {}
 }
  

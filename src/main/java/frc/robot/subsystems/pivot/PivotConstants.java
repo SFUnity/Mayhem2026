@@ -10,6 +10,8 @@ public class PivotConstants {
   public static final double maxAngleDegs = 135;
   public static final double armLengthMeters = Units.inchesToMeters(15);
   public static final double pivotGearRatio = 45.0 * 12.0 / 34.0;
-  public static final double motorID = 0;
+
+  public static final int motorID = 0;
+  
   public static final double SupplyCurrentLimit = 80.0;
 }

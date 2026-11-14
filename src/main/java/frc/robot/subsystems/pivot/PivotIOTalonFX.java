@@ -8,11 +8,12 @@ public class PivotIOTalonFX implements PivotIO {
     private final TalonFXConfiguration config;
 
     public PivotIOTalonFX() {
-        pivot = new TalonFX(PivotConstants.motorID)
-        config = new TalonFXConfiguration()
+        pivot = new TalonFX(PivotConstants.motorID);
+        config = new TalonFXConfiguration();
         config.CurrentLimits.SupplyCurrentLimit = PivotConstants.SupplyCurrentLimit;
         config.CurrentLimits.SupplyCurrentLimitEnable = true;
         pivot.getConfigurator().apply(config);
-
+    
+    
     }
 }
