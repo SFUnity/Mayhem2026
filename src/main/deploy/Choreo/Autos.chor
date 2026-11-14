@@ -48,6 +48,62 @@
      "val":0.0
     }
    },
+   "BalanceBeamLower":{
+    "x":{
+     "exp":"104 in",
+     "val":2.6416
+    },
+    "y":{
+     "exp":"52.19 in",
+     "val":1.325626
+    },
+    "heading":{
+     "exp":"0 rad",
+     "val":0.0
+    }
+   },
+   "BalanceBeamUpper":{
+    "x":{
+     "exp":"104 in",
+     "val":2.6416
+    },
+    "y":{
+     "exp":"81.553851 in",
+     "val":2.0714678153999997
+    },
+    "heading":{
+     "exp":"0 rad",
+     "val":0.0
+    }
+   },
+   "CenterofStartingLinePoint":{
+    "x":{
+     "exp":"23.142 in",
+     "val":0.5878068
+    },
+    "y":{
+     "exp":"54.95 in",
+     "val":1.39573
+    },
+    "heading":{
+     "exp":"0 rad",
+     "val":0.0
+    }
+   },
+   "LowerStartingPoint":{
+    "x":{
+     "exp":"23.142 in",
+     "val":0.5878068
+    },
+    "y":{
+     "exp":"24.62 in",
+     "val":0.625348
+    },
+    "heading":{
+     "exp":"0 rad",
+     "val":0.0
+    }
+   },
    "MiddleFieldBlocks":{
     "x":{
      "exp":"173.9 in",
@@ -62,14 +118,14 @@
      "val":0.0
     }
    },
-   "StartLineCenter":{
+   "UpperStartingPoint":{
     "x":{
-     "exp":"13.5 in",
-     "val":0.3429
+     "exp":"23.142 in",
+     "val":0.5878068
     },
     "y":{
-     "exp":"54.95 in",
-     "val":1.39573
+     "exp":"81.553851 in",
+     "val":2.0714678153999997
     },
     "heading":{
      "exp":"0 rad",
