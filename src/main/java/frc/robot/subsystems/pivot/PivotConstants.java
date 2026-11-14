@@ -12,4 +12,9 @@ public class PivotConstants {
   public static final double gearRatio = 45.0 * 34.0/12.0;
   public static final int motorID = 0;
   public static final double supplyCurrentLimit = 80.0;
+  public static final double kP = 0.1;
+  public static final double kd = 0.0;
+  public static final double velocity = Units.degreesToRotations(45.0);
+  public static final double acceleration = Units.degreesToRotations(45.0);
+
 }
