@@ -39,7 +39,7 @@ public class PivotIOTalonFX implements PivotIO {
   }
 
   @Override
-  public void requestMotorAngle(double degrees) {
+  public void setMotorAngle(double degrees) {
     motionMagicVoltage.withPosition(Units.degreesToRotations(degrees));
     pivot.setControl(motionMagicVoltage);
   }

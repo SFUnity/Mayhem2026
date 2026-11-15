@@ -17,7 +17,7 @@ public class PivotIOSim implements PivotIO {
   }
 
   @Override
-  public void requestMotorAngle(double degrees) {
+  public void setMotorAngle(double degrees) {
     this.pivotDegrees = degrees;
   }
 
