@@ -1,6 +1,8 @@
 package frc.robot;
 
 import choreo.auto.AutoFactory;
+import choreo.auto.AutoRoutine;
+import choreo.auto.AutoTrajectory;
 import choreo.trajectory.SwerveSample;
 import choreo.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -52,6 +54,11 @@ public class Autos {
     /* Set up main choreo routines */
     chooser = new LoggedAutoChooser("/ChoreoChooser");
 
+    chooser.addRoutine("LowerStartGrabCubeAndBalance", this::LowerStartGrabCubeAndBalance);
+    chooser.addRoutine("LowerDoubleDrabCubeBalance", this::LowerDoubleGrabCubeBalance);
+    chooser.addRoutine("UpperStartGrabCubeBalance", this::UpperStartGrabCubeBalance);
+    chooser.addRoutine("PickupCubeOverBeam", this::PickupCubeOverBeam);
+
     // not as necessary
     // chooser.addRoutine("Climb", this::climbAutoRoutine);
     // chooser.addRoutine("Outpost Climb", this::outpostClimbAutoRoutine);
@@ -94,4 +101,27 @@ public class Autos {
   public Command getAutonomousCommand() {
     return isChoreoAuto ? chooser.selectedCommandScheduler() : nonChoreoChooser.get();
   }
+}
+
+public AutoRoutine LowerStartGrabCubeAndBalanceAutoRoutine () {
+  AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
+  AutoTrajectory LowerStartGrabCubeAndBalance = routine.trajectory("LowerStartGrabCubeAndBalance");
+  
+}
+
+public AutoRoutine LowerDoubleGrabCubeBalanceAutoRoutine () {
+  AutoRoutine routine = factory.newRoutine("LowerDoubleGrabCubeBalance");
+  AutoTrajectory LowerDoubleGrabCubeBalance = routine.trajectory("LowerDoubleGrabCubeBalance");
+
+}
+
+public AutoRoutine UpperStartGrabCubeBalanceAutoRoutine () {
+  AutoRoutine routine = factory.newRoutine("UpperStartGrabCubeBalance");
+  AutoTrajectory UpperStartGrabCubeBalance = routine.trajectory("UpperStartGrabCubeBalance");
+
+}
+
+public AutoRoutine PickupCubeOverBeamAutoRoutine () {
+  AutoRoutine routine = factory.newRoutine("PickupCubeOverBeam");
+  AutoTrajectory PickupCubeOVerBeam = routine.trajectory("PickupCubeOverBeam");
 }
