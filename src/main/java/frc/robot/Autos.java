@@ -101,27 +101,32 @@ public class Autos {
   public Command getAutonomousCommand() {
     return isChoreoAuto ? chooser.selectedCommandScheduler() : nonChoreoChooser.get();
   }
-}
 
-public AutoRoutine LowerStartGrabCubeAndBalanceAutoRoutine () {
+public AutoRoutine LowerStartGrabCubeAndBalance() {
   AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
   AutoTrajectory LowerStartGrabCubeAndBalance = routine.trajectory("LowerStartGrabCubeAndBalance");
+  return routine;
   
 }
 
-public AutoRoutine LowerDoubleGrabCubeBalanceAutoRoutine () {
+public AutoRoutine LowerDoubleGrabCubeBalance() {
   AutoRoutine routine = factory.newRoutine("LowerDoubleGrabCubeBalance");
   AutoTrajectory LowerDoubleGrabCubeBalance = routine.trajectory("LowerDoubleGrabCubeBalance");
+  return routine;
 
 }
 
-public AutoRoutine UpperStartGrabCubeBalanceAutoRoutine () {
+public AutoRoutine UpperStartGrabCubeBalance() {
   AutoRoutine routine = factory.newRoutine("UpperStartGrabCubeBalance");
   AutoTrajectory UpperStartGrabCubeBalance = routine.trajectory("UpperStartGrabCubeBalance");
+  return routine;
 
 }
 
-public AutoRoutine PickupCubeOverBeamAutoRoutine () {
+public AutoRoutine PickupCubeOverBeam() {
   AutoRoutine routine = factory.newRoutine("PickupCubeOverBeam");
-  AutoTrajectory PickupCubeOVerBeam = routine.trajectory("PickupCubeOverBeam");
+  AutoTrajectory PickupCubeOverBeam = routine.trajectory("PickupCubeOverBeam");
+  return routine; 
+}
+
 }
