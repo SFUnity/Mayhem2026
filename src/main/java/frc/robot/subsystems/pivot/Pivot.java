@@ -15,7 +15,7 @@ public class Pivot extends SubsystemBase {
     F_L3(PivotConstants.F_L3_ANGLE),
     B_L3(PivotConstants.B_L3_ANGLE),
     B_L2(PivotConstants.B_L2_ANGLE),
-    B_L1(PivotConstants.B_L1_ANGLE),
+    B_L1(PivotConstants.B_L1_ANGLE);
 
 
     private final double angle;
