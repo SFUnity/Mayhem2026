@@ -11,10 +11,10 @@ public class Pivot extends SubsystemBase {
   public enum PivotState {
     F_DOWN(PivotConstants.F_DOWN_ANGLE),
     F_L1(PivotConstants.F_L1_ANGLE),
+    F_L1Stack(PivotConstants.F_L1Stack_ANGLE),
     F_L2(PivotConstants.F_L2_ANGLE),
-    F_L3(PivotConstants.F_L3_ANGLE),
-    B_L3(PivotConstants.B_L3_ANGLE),
     B_L2(PivotConstants.B_L2_ANGLE),
+    B_L1Stack(PivotConstants.B_L1Stack_ANGLE),
     B_L1(PivotConstants.B_L1_ANGLE);
 
 
