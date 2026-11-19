@@ -1,15 +1,20 @@
-// Copyright (c) 2021-2026 Littleton Robotics
+// Copyright 2021-2025 FRC 6328
 // http://github.com/Mechanical-Advantage
 //
-// Use of this source code is governed by a BSD
-// license that can be found in the LICENSE file
-// at the root directory of this project.
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// version 3 as published by the Free Software Foundation or
+// available in the root directory of this project.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
 
 package frc.robot.subsystems.drive;
 
-import com.ctre.phoenix6.configs.CANcoderConfiguration;
-import com.ctre.phoenix6.configs.TalonFXConfiguration;
-import com.ctre.phoenix6.swerve.SwerveModuleConstants;
+import static frc.robot.subsystems.drive.DriveConstants.*;
+
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
@@ -22,23 +27,16 @@ public class Module {
   private final ModuleIO io;
   private final ModuleIOInputsAutoLogged inputs = new ModuleIOInputsAutoLogged();
   private final int index;
-  private final SwerveModuleConstants<
-          TalonFXConfiguration, TalonFXConfiguration, CANcoderConfiguration>
-      constants;
 
   private final Alert driveDisconnectedAlert;
   private final Alert turnDisconnectedAlert;
   private final Alert turnEncoderDisconnectedAlert;
   private SwerveModulePosition[] odometryPositions = new SwerveModulePosition[] {};
 
-  public Module(
-      ModuleIO io,
-      int index,
-      SwerveModuleConstants<TalonFXConfiguration, TalonFXConfiguration, CANcoderConfiguration>
-          constants) {
+  public Module(ModuleIO io, int index) {
     this.io = io;
     this.index = index;
-    this.constants = constants;
+
     driveDisconnectedAlert =
         new Alert(
             "Disconnected drive motor on module " + Integer.toString(index) + ".",
@@ -60,13 +58,10 @@ public class Module {
     int sampleCount = inputs.odometryTimestamps.length; // All signals are sampled together
     odometryPositions = new SwerveModulePosition[sampleCount];
     for (int i = 0; i < sampleCount; i++) {
-      double positionMeters = inputs.odometryDrivePositionsRad[i] * constants.WheelRadius;
+      double positionMeters = inputs.odometryDrivePositionsRad[i] * wheelRadiusMeters;
       Rotation2d angle = inputs.odometryTurnPositions[i];
       odometryPositions[i] = new SwerveModulePosition(positionMeters, angle);
     }
-
-    Logger.recordOutput(
-        "Odometry/WrappedModuleAngles/Measured" + index, Math.abs(getAngle().getDegrees() % 180));
 
     // Update alerts
     driveDisconnectedAlert.set(!inputs.driveConnected);
@@ -78,21 +73,23 @@ public class Module {
   public void runSetpoint(SwerveModuleState state) {
     // Optimize velocity setpoint
     state.optimize(getAngle());
-    state.cosineScale(inputs.turnPosition);
+    state.cosineScale(getAngle());
 
     // Apply setpoints
-    io.setDriveVelocity(state.speedMetersPerSecond / constants.WheelRadius);
+    io.setDriveVelocity(state.speedMetersPerSecond / wheelRadiusMeters);
+    // io.setDriveOpenLoop(0.0);
     io.setTurnPosition(state.angle);
+  }
 
-    // Log
-    Logger.recordOutput(
-        "Odometry/WrappedModuleAngles/Setpoints" + index, Math.abs(state.angle.getDegrees() % 180));
+  public void test(double driveVoltage, double turnVoltage) {
+    io.setDriveOpenLoop(driveVoltage);
+    io.setTurnOpenLoop(turnVoltage);
   }
 
   /** Runs the module with the specified output while controlling to zero degrees. */
   public void runCharacterization(double output) {
     io.setDriveOpenLoop(output);
-    io.setTurnPosition(Rotation2d.kZero);
+    io.setTurnPosition(new Rotation2d());
   }
 
   /** Disables all outputs to motors. */
@@ -101,19 +98,23 @@ public class Module {
     io.setTurnOpenLoop(0.0);
   }
 
+  public double getDriveCurrent() {
+    return inputs.driveCurrentAmps;
+  }
+
   /** Returns the current turn angle of the module. */
   public Rotation2d getAngle() {
-    return inputs.turnPosition;
+    return inputs.turnAbsolutePosition;
   }
 
   /** Returns the current drive position of the module in meters. */
   public double getPositionMeters() {
-    return inputs.drivePositionRad * constants.WheelRadius;
+    return inputs.drivePositionRad * wheelRadiusMeters;
   }
 
   /** Returns the current drive velocity of the module in meters per second. */
   public double getVelocityMetersPerSec() {
-    return inputs.driveVelocityRadPerSec * constants.WheelRadius;
+    return inputs.driveVelocityRadPerSec * wheelRadiusMeters;
   }
 
   /** Returns the module position (turn angle and drive position). */
@@ -146,11 +147,18 @@ public class Module {
     return Units.radiansToRotations(inputs.driveVelocityRadPerSec);
   }
 
-  public void setTurnPDS(double turnkP, double turnkD, double turnkS) {
-    io.setTurnPDS(turnkP, turnkD, turnkS);
+  public void setDrivePIDF(double drivekP, double drivekD) {
+    io.setDrivePIDF(drivekP, drivekD);
   }
 
-  public void setDriveP(double drivekP) {
-    io.setDriveP(drivekP);
+  public void setTurnPIDF(double turnkP) {
+    io.setTurnPIDF(turnkP);
+  }
+
+  /** Sets whether brake mode is enabled. */
+  public void setBrakeMode(boolean enabled) {
+    Logger.recordOutput("Drive/BrakeMode/Module" + Integer.toString(index), enabled);
+    io.setDriveBrakeMode(enabled);
+    io.setTurnBrakeMode(enabled);
   }
 }

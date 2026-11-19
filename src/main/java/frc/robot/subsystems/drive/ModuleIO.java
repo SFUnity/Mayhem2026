@@ -1,9 +1,15 @@
-// Copyright (c) 2021-2026 Littleton Robotics
+// Copyright 2021-2025 FRC 6328
 // http://github.com/Mechanical-Advantage
 //
-// Use of this source code is governed by a BSD
-// license that can be found in the LICENSE file
-// at the root directory of this project.
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of the GNU General Public License
+// version 3 as published by the Free Software Foundation or
+// available in the root directory of this project.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
 
 package frc.robot.subsystems.drive;
 
@@ -17,17 +23,15 @@ public interface ModuleIO {
     public double drivePositionRad = 0.0;
     public double driveVelocityRadPerSec = 0.0;
     public double driveAppliedVolts = 0.0;
-    public double driveStatorCurrentAmps = 0.0;
-    public double driveSupplyCurrentAmps = 0.0;
+    public double driveCurrentAmps = 0.0;
 
     public boolean turnConnected = false;
     public boolean turnEncoderConnected = false;
-    public Rotation2d turnAbsolutePosition = Rotation2d.kZero;
-    public Rotation2d turnPosition = Rotation2d.kZero;
+    public Rotation2d turnAbsolutePosition = new Rotation2d();
+    public Rotation2d turnPosition = new Rotation2d();
     public double turnVelocityRadPerSec = 0.0;
     public double turnAppliedVolts = 0.0;
-    public double turnStatorCurrentAmps = 0.0;
-    public double turnSupplyCurrentAmps = 0.0;
+    public double turnCurrentAmps = 0.0;
 
     public double[] odometryTimestamps = new double[] {};
     public double[] odometryDrivePositionsRad = new double[] {};
@@ -49,9 +53,15 @@ public interface ModuleIO {
   /** Run the turn motor to the specified rotation. */
   public default void setTurnPosition(Rotation2d rotation) {}
 
-  /** Set P and D gains for turn motor */
-  public default void setTurnPDS(double turnkP, double turnkD, double turnkS) {}
+  /** Set PID & ff gains for drive motor */
+  public default void setDrivePIDF(double drivekP, double drivekD) {}
 
-  /** Set P gain for drive motor */
-  public default void setDriveP(double drivekP) {}
+  /** Set PID & ff gains for turn motor */
+  public default void setTurnPIDF(double turnkP) {}
+
+  /** Set the brake mode of the drive motor. */
+  public default void setDriveBrakeMode(boolean brakeMode) {}
+
+  /** Set the brake mode of the turn motor. */
+  public default void setTurnBrakeMode(boolean brakeMode) {}
 }

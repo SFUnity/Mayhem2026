@@ -101,7 +101,7 @@ public class Autos {
   public Command getAutonomousCommand() {
     return isChoreoAuto ? chooser.selectedCommandScheduler() : nonChoreoChooser.get();
   }
-}
+
 
 public AutoRoutine LowerStartGrabCubeAndBalanceAutoRoutine () {
   AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
@@ -124,4 +124,5 @@ public AutoRoutine UpperStartGrabCubeBalanceAutoRoutine () {
 public AutoRoutine PickupCubeOverBeamAutoRoutine () {
   AutoRoutine routine = factory.newRoutine("PickupCubeOverBeam");
   AutoTrajectory PickupCubeOVerBeam = routine.trajectory("PickupCubeOverBeam");
+}
 }
