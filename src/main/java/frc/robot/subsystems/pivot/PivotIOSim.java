@@ -1,11 +1,11 @@
 package frc.robot.subsystems.pivot;
 
 public class PivotIOSim implements PivotIO {
-    double pivotVolts = 0.0;
-    double pivotSupplyCurrent = 0.0;
-    double pivotStatorCurrent = 0.0;
-    double pivotSpeed = 0.0;
-    double pivotDegrees = 0.0;
+  double pivotVolts = 0.0;
+  double pivotSupplyCurrent = 0.0;
+  double pivotStatorCurrent = 0.0;
+  double pivotSpeed = 0.0;
+  double pivotDegrees = 0.0;
 
     @Override
     public void updateInputs(PivotIOInputs inputs) {
