@@ -467,5 +467,10 @@
     {"t":9.94679, "x":2.6416, "y":2.07147, "heading":0.0, "vx":0.0, "vy":0.0, "omega":0.0, "ax":0.0, "ay":0.0, "alpha":0.0, "fx":[0.0,0.0,0.0,0.0], "fy":[0.0,0.0,0.0,0.0]}],
   "splits":[0]
  },
- "events":[]
+ "events":[
+   {"name":"Drop Cube", "from":{"target":3, "targetTimestamp":1.44193, "offset":{"exp":"0 s", "val":0.0}}, "event":null},
+   {"name":"Intake Cube", "from":{"target":6, "targetTimestamp":3.61623, "offset":{"exp":"0 s", "val":0.0}}, "event":{"type":"wait", "data":{"waitTime":{"exp":"3 s", "val":3.0}}}},
+   {"name":"Drop off cube", "from":{"target":8, "targetTimestamp":5.11983, "offset":{"exp":"0 s", "val":0.0}}, "event":{"type":"wait", "data":{"waitTime":{"exp":"3 s", "val":3.0}}}},
+   {"name":"Intake Cube", "from":{"target":11, "targetTimestamp":7.34935, "offset":{"exp":"0 s", "val":0.0}}, "event":{"type":"wait", "data":{"waitTime":{"exp":"3 s", "val":3.0}}}},
+   {"name":"Drop off cube", "from":{"target":14, "targetTimestamp":8.83353, "offset":{"exp":"0 s", "val":0.0}}, "event":{"type":"wait", "data":{"waitTime":{"exp":"3 s", "val":3.0}}}}]
 }
