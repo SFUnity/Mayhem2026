@@ -58,6 +58,8 @@ public class Autos {
     chooser.addRoutine("LowerDoubleDrabCubeBalance", this::LowerDoubleGrabCubeBalance);
     chooser.addRoutine("UpperStartGrabCubeBalance", this::UpperStartGrabCubeBalance);
     chooser.addRoutine("PickupCubeOverBeam", this::PickupCubeOverBeam);
+    chooser.addRoutine("UpperExitBalance", this::UpperExitBalance);
+    chooser.addRoutine("LowerExitBalance", this::LowerExitBalance);
 
     // not as necessary
     // chooser.addRoutine("Climb", this::climbAutoRoutine);
@@ -127,6 +129,20 @@ public AutoRoutine PickupCubeOverBeam() {
   AutoRoutine routine = factory.newRoutine("PickupCubeOverBeam");
   AutoTrajectory PickupCubeOverBeam = routine.trajectory("PickupCubeOverBeam");
   return routine; 
+}
+
+public AutoRoutine UpperExitBalance() {
+  AutoRoutine routine = factory.newRoutine("UpperExitBalance");
+  AutoTrajectory UpperExitBalance = routine.trajectory("UpperExitBalance");
+  return routine;
+
+}
+
+public AutoRoutine LowerExitBalance() {
+  AutoRoutine routine = factory.newRoutine("LowerExitBalance");
+  AutoTrajectory LowerExitBalance = routine.trajectory("LowerExitBalance");
+  return routine;
+
 }
 
 }
