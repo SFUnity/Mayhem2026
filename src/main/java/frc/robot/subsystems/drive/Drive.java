@@ -419,10 +419,6 @@ public class Drive extends SubsystemBase {
           // Apply deadband
           double omega = MathUtil.applyDeadband(o, DEADBAND);
 
-          // Check for slow mode
-          if (config.slowMode().getAsBoolean()) {
-            omega *= config.slowTurnMultiplier().get();
-          }
 
           // Square values and scale to max velocity
           omega = Math.copySign(omega * omega, omega);
@@ -622,12 +618,7 @@ public class Drive extends SubsystemBase {
     double x = config.getXInput();
     double y = config.getYInput();
 
-    // Check for slow mode
-    if (config.slowMode().getAsBoolean()) {
-      double multiplier = config.slowDriveMultiplier().get();
-      x *= multiplier;
-      y *= multiplier;
-    }
+
 
     // Apply deadband
     double linearMagnitude = MathUtil.applyDeadband(Math.hypot(x, y), DEADBAND);
