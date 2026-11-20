@@ -27,7 +27,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.DriveCommands;
 import frc.robot.commands.RobotCommands;
 import frc.robot.generated.TunerConstants;
 import frc.robot.lib.BLine.FollowPath;
@@ -134,10 +133,10 @@ public class RobotContainer {
         drive =
             new Drive(
                 new GyroIOPigeon2(),
-                new ModuleIOMixed(TunerConstants.FrontLeft),
-                new ModuleIOMixed(TunerConstants.FrontRight),
-                new ModuleIOMixed(TunerConstants.BackLeft),
-                new ModuleIOMixed(TunerConstants.BackRight),
+                new ModuleIOMixed(0),
+                new ModuleIOMixed(1),
+                new ModuleIOMixed(2),
+                new ModuleIOMixed(3),
                 poseManager, driveCommandsConfig);
 
         // vision = new Vision(poseManager, new VisionIO() {});
@@ -155,10 +154,10 @@ public class RobotContainer {
         drive =
             new Drive(
                 new GyroIO() {},
-                new ModuleIOSim(TunerConstants.FrontLeft),
-                new ModuleIOSim(TunerConstants.FrontRight),
-                new ModuleIOSim(TunerConstants.BackLeft),
-                new ModuleIOSim(TunerConstants.BackRight),
+                new ModuleIOSim(),
+                new ModuleIOSim(),
+                new ModuleIOSim(),
+                new ModuleIOSim(),
                 poseManager, driveCommandsConfig);
         vision = new Vision(poseManager, new VisionIO() {});
         rollers = new Rollers(new RollersIOSim());
