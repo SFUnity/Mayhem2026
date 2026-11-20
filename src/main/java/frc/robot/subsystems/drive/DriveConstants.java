@@ -22,7 +22,6 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Autos;
 import frc.robot.Constants;
 import frc.robot.util.LoggedTunableNumber;
-import java.util.function.BooleanSupplier;
 
 public class DriveConstants {
   public static final double maxSpeedMetersPerSec = Units.feetToMeters(10.5);
