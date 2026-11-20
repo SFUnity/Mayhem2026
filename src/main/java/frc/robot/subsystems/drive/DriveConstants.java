@@ -145,19 +145,13 @@ public class DriveConstants {
    * @param xJoystick - Left Joystick X axis
    * @param yJoystick - Left Joystick Y axis
    * @param omegaJoystick - Right Joystick X axis
-   * @param slowMode - If the joystick drive should be slowed down
-   * @param slowDriveMultiplier - Multiplier for slow mode
-   * @param slowTurnMultiplier - Multiplier for slow mode
    * @param povUp - POV/Dpad Up
    * @param povDown - POV/Dpad Down
    * @param povLeft - POV/Dpad Left
    * @param povRight - POV/Dpad Right
    */
   public static final record DriveCommandsConfig(
-      CommandXboxController controller,
-      BooleanSupplier slowMode,
-      LoggedTunableNumber slowDriveMultiplier,
-      LoggedTunableNumber slowTurnMultiplier) {
+      CommandXboxController controller) {
 
     private static final boolean simMode = Constants.currentMode == Constants.Mode.SIM;
 
