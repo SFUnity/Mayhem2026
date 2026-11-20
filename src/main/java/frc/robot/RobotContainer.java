@@ -34,11 +34,12 @@ import frc.robot.lib.BLine.FollowPath;
 import frc.robot.lib.BLine.Path;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.drive.DriveConstants;
+import frc.robot.subsystems.drive.DriveConstants.DriveCommandsConfig;
 import frc.robot.subsystems.drive.GyroIO;
 import frc.robot.subsystems.drive.GyroIOPigeon2;
 import frc.robot.subsystems.drive.ModuleIO;
 import frc.robot.subsystems.drive.ModuleIOSim;
-import frc.robot.subsystems.drive.ModuleIOTalonFX;
+import frc.robot.subsystems.drive.ModuleIOMixed;
 import frc.robot.subsystems.rollers.Rollers;
 import frc.robot.subsystems.rollers.RollersIO;
 import frc.robot.subsystems.rollers.RollersIOSim;
@@ -47,6 +48,7 @@ import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.vision.VisionIO;
 import frc.robot.subsystems.vision.VisionIOLimelight;
 import frc.robot.util.FuelSim;
+import frc.robot.util.LoggedTunableNumber;
 import frc.robot.util.PoseManager;
 import frc.robot.util.ShiftHelpers;
 import org.littletonrobotics.junction.Logger;
@@ -98,6 +100,10 @@ public class RobotContainer {
   private final LoggedNetworkBoolean demoMode =
       new LoggedNetworkBoolean("Demo Mode Speed Limit", true);
 
+        private final DriveCommandsConfig driveCommandsConfig =
+      new DriveCommandsConfig(controller);
+
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   @SuppressWarnings("resource")
   public RobotContainer() {
@@ -128,11 +134,11 @@ public class RobotContainer {
         drive =
             new Drive(
                 new GyroIOPigeon2(),
-                new ModuleIOTalonFX(TunerConstants.FrontLeft),
-                new ModuleIOTalonFX(TunerConstants.FrontRight),
-                new ModuleIOTalonFX(TunerConstants.BackLeft),
-                new ModuleIOTalonFX(TunerConstants.BackRight),
-                poseManager);
+                new ModuleIOMixed(TunerConstants.FrontLeft),
+                new ModuleIOMixed(TunerConstants.FrontRight),
+                new ModuleIOMixed(TunerConstants.BackLeft),
+                new ModuleIOMixed(TunerConstants.BackRight),
+                poseManager, driveCommandsConfig);
 
         // vision = new Vision(poseManager, new VisionIO() {});
         vision =
@@ -153,23 +159,10 @@ public class RobotContainer {
                 new ModuleIOSim(TunerConstants.FrontRight),
                 new ModuleIOSim(TunerConstants.BackLeft),
                 new ModuleIOSim(TunerConstants.BackRight),
-                poseManager);
+                poseManager, driveCommandsConfig);
         vision = new Vision(poseManager, new VisionIO() {});
         rollers = new Rollers(new RollersIOSim());
 
-        fuelSim.spawnStartingFuel(); // spawns fuel in the depots and neutral zone
-        // Register a robot for collision with fuel
-        fuelSim
-            .start(); // enables the simulation to run (updateSim must still be called periodically)
-        fuelSim.registerRobot(
-            Units.inchesToMeters(DriveConstants.widthInches)
-                + 2 * DriveConstants.bumperWidth, // from left to right in meters
-            Units.inchesToMeters(DriveConstants.lengthInches)
-                + 2 * DriveConstants.bumperWidth, // from front to back in meters
-            DriveConstants.bumperHeight, // from floor to top of bumpers in meters
-            () -> poseManager.getPose(), // Supplier<Pose2d> of robot pose
-            () ->
-                drive.getFieldSpeeds()); // Supplier<ChassisSpeeds> of field-centric chassis speeds
 
         // Register an intake to remove fuel from the field as a rectangular bounding box
         double minX = Units.inchesToMeters(17.049462);
@@ -187,7 +180,7 @@ public class RobotContainer {
                 new ModuleIO() {},
                 new ModuleIO() {},
                 new ModuleIO() {},
-                poseManager);
+                poseManager, driveCommandsConfig);
         vision = new Vision(poseManager, new VisionIO() {});
         rollers = new Rollers(new RollersIO() {});
         break;
@@ -312,13 +305,7 @@ public class RobotContainer {
     //         poseManager,
     //         () -> intakePivot.intakeDown()));
     drive.setDefaultCommand(
-        DriveCommands.toggleLimitSpeed(
-            drive,
-            () -> -controller.getLeftY(),
-            () -> -controller.getLeftX(),
-            () -> -controller.getRightX(),
-            poseManager,
-            demoMode::get));
+        drive.joystickDrive());
 
     // Switch to X pattern when X button is pressed
     controller.x().onTrue(Commands.runOnce(drive::stopWithX, drive));
