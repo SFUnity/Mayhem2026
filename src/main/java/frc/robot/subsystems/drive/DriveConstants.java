@@ -30,7 +30,7 @@ public class DriveConstants {
   public static final double maxAccelerationMetersPerSec =
       Units.feetToMeters(70.0); // This is what 6328
   public static final double odometryFrequency = 100.0; // Hz
-  public static final double trackWidth = Units.inchesToMeters(20.75);
+  public static final double trackWidth = Units.inchesToMeters(20.75); //TODO update these
   public static final double wheelBase = trackWidth;
   public static final double driveBaseRadius = Math.hypot(trackWidth / 2.0, wheelBase / 2.0);
   public static final double maxAngularSpeedRadiansPerSec = maxSpeedMetersPerSec / driveBaseRadius;
