@@ -53,13 +53,13 @@ public class Autos {
     /* Set up main choreo routines */
     chooser = new LoggedAutoChooser("/ChoreoChooser");
 
-    //chooser.addRoutine("LowerStartGrabCubeAndBalance", this::LowerStartGrabCubeAndBalance);
-    //chooser.addRoutine("LowerDoubleDrabCubeBalance", this::LowerDoubleGrabCubeBalance);
-    //chooser.addRoutine("UpperStartGrabCubeBalance", this::UpperStartGrabCubeBalance);
-    //chooser.addRoutine("PickupCubeOverBeam", this::PickupCubeOverBeam);
-    //chooser.addRoutine("UpperExitBalance", this::UpperExitBalance);
-    //chooser.addRoutine("LowerExitBalance", this::LowerExitBalance);
-    //chooser.addRoutine("UpperDoubleGrab", this::UpperDoubleGrab);
+    // chooser.addRoutine("LowerStartGrabCubeAndBalance", this::LowerStartGrabCubeAndBalance);
+    // chooser.addRoutine("LowerDoubleDrabCubeBalance", this::LowerDoubleGrabCubeBalance);
+    // chooser.addRoutine("UpperStartGrabCubeBalance", this::UpperStartGrabCubeBalance);
+    // chooser.addRoutine("PickupCubeOverBeam", this::PickupCubeOverBeam);
+    // chooser.addRoutine("UpperExitBalance", this::UpperExitBalance);
+    // chooser.addRoutine("LowerExitBalance", this::LowerExitBalance);
+    // chooser.addRoutine("UpperDoubleGrab", this::UpperDoubleGrab);
     chooser.addRoutine("LowerBalance", this::LowerBalance);
     chooser.addRoutine("UpperBalance", this::UpperBalance);
     chooser.addRoutine("ExitSafezone", this::ExitSafezone);
@@ -107,6 +107,7 @@ public class Autos {
                 LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
     return routine;
   }
+
   public AutoRoutine LowerStartGrabCubeAndBalance() {
     AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
     AutoTrajectory LowerStartGrabCubeAndBalance =
@@ -122,42 +123,58 @@ public class Autos {
   public AutoRoutine LowerDoubleGrabCubeBalance() {
     AutoRoutine routine = factory.newRoutine("LowerDoubleGrabCubeBalance");
     AutoTrajectory LowerDoubleGrabCubeBalance = routine.trajectory("LowerDoubleGrabCubeBalance");
-       routine.active().onTrue(Commands.sequence(LowerDoubleGrabCubeBalance.resetOdometry(), LowerDoubleGrabCubeBalance.cmd()));
+    routine
+        .active()
+        .onTrue(
+            Commands.sequence(
+                LowerDoubleGrabCubeBalance.resetOdometry(), LowerDoubleGrabCubeBalance.cmd()));
     return routine;
   }
 
   public AutoRoutine UpperStartGrabCubeBalance() {
     AutoRoutine routine = factory.newRoutine("UpperStartGrabCubeBalance");
     AutoTrajectory UpperStartGrabCubeBalance = routine.trajectory("UpperStartGrabCubeBalance");
-    routine.active().onTrue(Commands.sequence(UpperStartGrabCubeBalance.resetOdometry(), UpperStartGrabCubeBalance.cmd()));
+    routine
+        .active()
+        .onTrue(
+            Commands.sequence(
+                UpperStartGrabCubeBalance.resetOdometry(), UpperStartGrabCubeBalance.cmd()));
     return routine;
   }
 
   public AutoRoutine PickupCubeOverBeam() {
     AutoRoutine routine = factory.newRoutine("PickupCubeOverBeam");
     AutoTrajectory PickupCubeOverBeam = routine.trajectory("PickupCubeOverBeam");
-    routine.active().onTrue(Commands.sequence(PickupCubeOverBeam.resetOdometry(), PickupCubeOverBeam.cmd()));
+    routine
+        .active()
+        .onTrue(Commands.sequence(PickupCubeOverBeam.resetOdometry(), PickupCubeOverBeam.cmd()));
     return routine;
   }
 
   public AutoRoutine UpperExitBalance() {
     AutoRoutine routine = factory.newRoutine("UpperExitBalance");
     AutoTrajectory UpperExitBalance = routine.trajectory("UpperExitBalance");
-    routine.active().onTrue(Commands.sequence(UpperExitBalance.resetOdometry(), UpperExitBalance.cmd()));
+    routine
+        .active()
+        .onTrue(Commands.sequence(UpperExitBalance.resetOdometry(), UpperExitBalance.cmd()));
     return routine;
   }
 
   public AutoRoutine LowerExitBalance() {
     AutoRoutine routine = factory.newRoutine("LowerExitBalance");
     AutoTrajectory LowerExitBalance = routine.trajectory("LowerExitBalance");
-    routine.active().onTrue(Commands.sequence(LowerExitBalance.resetOdometry(), LowerExitBalance.cmd()));
+    routine
+        .active()
+        .onTrue(Commands.sequence(LowerExitBalance.resetOdometry(), LowerExitBalance.cmd()));
     return routine;
   }
 
   public AutoRoutine UpperDoubleGrab() {
     AutoRoutine routine = factory.newRoutine("UpperDoubleGrab");
     AutoTrajectory UpperDoubleGrab = routine.trajectory("UpperDoubleGrab");
-    routine.active().onTrue(Commands.sequence(UpperDoubleGrab.resetOdometry(), UpperDoubleGrab.cmd()));
+    routine
+        .active()
+        .onTrue(Commands.sequence(UpperDoubleGrab.resetOdometry(), UpperDoubleGrab.cmd()));
     return routine;
   }
 
