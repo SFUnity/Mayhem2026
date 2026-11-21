@@ -318,10 +318,10 @@ public class RobotContainer {
     controller.leftTrigger().onTrue(RobotCommands.outtake(rollers));
     controller.leftTrigger().onFalse(RobotCommands.stopIntake(rollers));
     // test and adjust!!
-    controller.rightBumper().onTrue(RobotCommands.pivotBackwardL1(pivot));
-    controller.rightBumper().onFalse(RobotCommands.pivotBackwardL2(pivot));
+    controller.rightBumper().onTrue(RobotCommands.pivotForwardL1(pivot));
+    controller.rightBumper().onFalse(RobotCommands.pivotForwardL2(pivot));
+    controller.leftBumper().onFalse(RobotCommands.pivotForwardL1(pivot));
     controller.leftBumper().onTrue(RobotCommands.pivotForwardL2(pivot));
-    controller.leftBumper().onFalse(RobotCommands.pivotBackwardL1(pivot));
 
     // Reset gyro to 0° when start or back button is pressed
     controller
