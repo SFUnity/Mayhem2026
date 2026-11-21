@@ -62,6 +62,7 @@ public class Autos {
     chooser.addRoutine("UpperDoubleGrab", this::UpperDoubleGrab);
     chooser.addRoutine("LowerBalance", this::LowerBalance);
     chooser.addRoutine("UpperBalance", this::UpperBalance);
+    chooser.addRoutine("ExitSafezone", this::ExitSafezone);
     // chooser.addRoutine("UpperGrabOnceandBalanceWithCommands",
     // this::UpperGrabOnceandBalanceWithCommands);
 
@@ -162,6 +163,14 @@ public class Autos {
     routine.active().onTrue(Commands.sequence(UpperBalance.resetOdometry(), UpperBalance.cmd()));
     return routine;
   }
+
+    public AutoRoutine ExitSafezone() {
+    AutoRoutine routine = factory.newRoutine("ExitSafezone");
+    AutoTrajectory ExitSafezone = routine.trajectory("ExitSafezone");
+    routine.active().onTrue(Commands.sequence(ExitSafezone.resetOdometry(), ExitSafezone.cmd()));
+    return routine;
+  }
+  
   /* No clue how to fix this, but they are separated paths so that the robot can stop to intake,
   but I don't know how to robot works. If it can just run into blocks and intake like that, then we can use similar code
   to Claude and have it intake on checkpoints -> number checkpoints so we can use them
