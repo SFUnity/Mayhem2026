@@ -17,7 +17,6 @@ public class Pivot extends SubsystemBase {
     B_L1Stack(PivotConstants.B_L1Stack_ANGLE),
     B_L1(PivotConstants.B_L1_ANGLE);
 
-
     private final double angle;
 
     PivotState(double angle) {
@@ -34,21 +33,17 @@ public class Pivot extends SubsystemBase {
   }
 
   @Override
-    public void periodic() {
-        io.updateInputs(inputs);
+  public void periodic() {
+    io.updateInputs(inputs);
 
-        io.setMotorAngle(state.getAngle());
-    }
-    public void setState(PivotState state) {
-        this.state = state;
-    }
+    io.setMotorAngle(state.getAngle());
+  }
 
-    public PivotState getState() {
-        return state;
+  public void setState(PivotState state) {
+    this.state = state;
+  }
 
-    }
-
-   
-
-
-} 
+  public PivotState getState() {
+    return state;
+  }
+}

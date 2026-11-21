@@ -64,7 +64,8 @@ public class Autos {
     chooser.addRoutine("UpperDoubleGrab", this::UpperDoubleGrab);
     chooser.addRoutine("LowerBalanceNOPRELOAD", this::LowerBalanceNOPRELOAD);
     chooser.addRoutine("UpperBalanceNOPRELOAD", this::UpperBalanceNOPRELOAD);
-    //chooser.addRoutine("UpperGrabOnceandBalanceWithCommands", this::UpperGrabOnceandBalanceWithCommands);
+    // chooser.addRoutine("UpperGrabOnceandBalanceWithCommands",
+    // this::UpperGrabOnceandBalanceWithCommands);
 
     // not as necessary
     // chooser.addRoutine("Climb", this::climbAutoRoutine);
@@ -78,24 +79,11 @@ public class Autos {
 
       // SysID & non-choreo routines
       if (!isChoreoAuto) {
-        nonChoreoChooser.addOption("TuneModuleDrive", DriveCommands.tuneModuleDrive(drive));
-        nonChoreoChooser.addOption("TuneModuleTurn", DriveCommands.tuneModuleTurn(drive));
+        nonChoreoChooser.addOption("TuneModuleDrive", drive.tuneModuleDrive());
+        nonChoreoChooser.addOption("TuneModuleTurn", drive.tuneModuleTurn());
         // Set up SysId routines
         nonChoreoChooser.addOption(
-            "Drive Wheel Radius Characterization",
-            DriveCommands.wheelRadiusCharacterization(drive, poseManager));
-        nonChoreoChooser.addOption(
-            "Drive Simple FF Characterization", DriveCommands.feedforwardCharacterization(drive));
-        nonChoreoChooser.addOption(
-            "Drive SysId (Quasistatic Forward)",
-            drive.sysIdQuasistatic(SysIdRoutine.Direction.kForward));
-        nonChoreoChooser.addOption(
-            "Drive SysId (Quasistatic Reverse)",
-            drive.sysIdQuasistatic(SysIdRoutine.Direction.kReverse));
-        nonChoreoChooser.addOption(
-            "Drive SysId (Dynamic Forward)", drive.sysIdDynamic(SysIdRoutine.Direction.kForward));
-        nonChoreoChooser.addOption(
-            "Drive SysId (Dynamic Reverse)", drive.sysIdDynamic(SysIdRoutine.Direction.kReverse));
+            "Drive Wheel Radius Characterization", drive.wheelRadiusCharacterization());
       }
     }
   }
@@ -121,53 +109,47 @@ public AutoRoutine LowerStartGrabCubeAndBalance() {
   
 }
 
-public AutoRoutine LowerDoubleGrabCubeBalance() {
-  AutoRoutine routine = factory.newRoutine("LowerDoubleGrabCubeBalance");
-  AutoTrajectory LowerDoubleGrabCubeBalance = routine.trajectory("LowerDoubleGrabCubeBalance");
-  return routine;
+  public AutoRoutine LowerDoubleGrabCubeBalance() {
+    AutoRoutine routine = factory.newRoutine("LowerDoubleGrabCubeBalance");
+    AutoTrajectory LowerDoubleGrabCubeBalance = routine.trajectory("LowerDoubleGrabCubeBalance");
+    return routine;
+  }
 
-}
+  public AutoRoutine UpperStartGrabCubeBalance() {
+    AutoRoutine routine = factory.newRoutine("UpperStartGrabCubeBalance");
+    AutoTrajectory UpperStartGrabCubeBalance = routine.trajectory("UpperStartGrabCubeBalance");
+    return routine;
+  }
 
-public AutoRoutine UpperStartGrabCubeBalance() {
-  AutoRoutine routine = factory.newRoutine("UpperStartGrabCubeBalance");
-  AutoTrajectory UpperStartGrabCubeBalance = routine.trajectory("UpperStartGrabCubeBalance");
-  return routine;
+  public AutoRoutine PickupCubeOverBeam() {
+    AutoRoutine routine = factory.newRoutine("PickupCubeOverBeam");
+    AutoTrajectory PickupCubeOverBeam = routine.trajectory("PickupCubeOverBeam");
+    return routine;
+  }
 
-}
+  public AutoRoutine UpperExitBalance() {
+    AutoRoutine routine = factory.newRoutine("UpperExitBalance");
+    AutoTrajectory UpperExitBalance = routine.trajectory("UpperExitBalance");
+    return routine;
+  }
 
-public AutoRoutine PickupCubeOverBeam() {
-  AutoRoutine routine = factory.newRoutine("PickupCubeOverBeam");
-  AutoTrajectory PickupCubeOverBeam = routine.trajectory("PickupCubeOverBeam");
-  return routine; 
-}
+  public AutoRoutine LowerExitBalance() {
+    AutoRoutine routine = factory.newRoutine("LowerExitBalance");
+    AutoTrajectory LowerExitBalance = routine.trajectory("LowerExitBalance");
+    return routine;
+  }
 
-public AutoRoutine UpperExitBalance() {
-  AutoRoutine routine = factory.newRoutine("UpperExitBalance");
-  AutoTrajectory UpperExitBalance = routine.trajectory("UpperExitBalance");
-  return routine;
+  public AutoRoutine UpperDoubleGrab() {
+    AutoRoutine routine = factory.newRoutine("UpperDoubleGrab");
+    AutoTrajectory UpperDoubleGrab = routine.trajectory("UpperDoubleGrab");
+    return routine;
+  }
 
-}
-
-public AutoRoutine LowerExitBalance() {
-  AutoRoutine routine = factory.newRoutine("LowerExitBalance");
-  AutoTrajectory LowerExitBalance = routine.trajectory("LowerExitBalance");
-  return routine;
-
-}
-
-public AutoRoutine UpperDoubleGrab() {
-  AutoRoutine routine = factory.newRoutine("UpperDoubleGrab");
-  AutoTrajectory UpperDoubleGrab = routine.trajectory("UpperDoubleGrab");
-  return routine;
-
-}
-
-public AutoRoutine LowerBalanceNOPRELOAD() {
-  AutoRoutine routine = factory.newRoutine("LowerBalanceNOPRELOAD");
-  AutoTrajectory LowerBalanceNOPRELOAD = routine.trajectory("LowerBalanceNOPRELOAD");
-  return routine;
-
-}
+  public AutoRoutine LowerBalanceNOPRELOAD() {
+    AutoRoutine routine = factory.newRoutine("LowerBalanceNOPRELOAD");
+    AutoTrajectory LowerBalanceNOPRELOAD = routine.trajectory("LowerBalanceNOPRELOAD");
+    return routine;
+  }
 
 public AutoRoutine UpperBalanceNOPRELOAD() {
   AutoRoutine routine = factory.newRoutine("UpperBalanceNOPRELOAD");
@@ -184,23 +166,23 @@ public AutoRoutine UpperBalanceNOPRELOAD() {
 but I don't know how to robot works. If it can just run into blocks and intake like that, then we can use similar code
 to Claude and have it intake on checkpoints -> number checkpoints so we can use them 
 
-public AutoRoutine UpperGrabOnceandBalanceWithCommands() {
-  AutoRoutine routine = factory.newRoutine("UpperGrabOnceandBalanceWithCommands");
+  public AutoRoutine UpperGrabOnceandBalanceWithCommands() {
+    AutoRoutine routine = factory.newRoutine("UpperGrabOnceandBalanceWithCommands");
 
-  AutoTrajectory UpperToDrop = routine.trajectory("UpperToDrop");
-  AutoTrajectory DropToCenter = routine.trajectory("DropToCenter");
-  AutoTrajectory CenterToUpperDrop = routine.trajectory("CenterToUpperDrop");
-  AutoTrajectory UpperDropToUpperBalance = routine.trajectory("UpperDropToUpperBalance");
+    AutoTrajectory UpperToDrop = routine.trajectory("UpperToDrop");
+    AutoTrajectory DropToCenter = routine.trajectory("DropToCenter");
+    AutoTrajectory CenterToUpperDrop = routine.trajectory("CenterToUpperDrop");
+    AutoTrajectory UpperDropToUpperBalance = routine.trajectory("UpperDropToUpperBalance");
 
-   routine
-     .active()
-     .onTrue(
-     Commands.sequence(
-       UpperToDrop.resetOdometry(), UpperToDrop.cmd(), RobotCommands.outtake(Rollers rollers), DropToCenter.cmd(), 
-       RobotCommands.intake(Rollers rollers), RobotCommands.stopIntake(Rollers rollers), CenterToUpperDrop.cmd(),
-       RobotCommands.outtake(Rollers rollers), UpperDropToUpperBalance.cmd()));
+     routine
+       .active()
+       .onTrue(
+       Commands.sequence(
+         UpperToDrop.resetOdometry(), UpperToDrop.cmd(), RobotCommands.outtake(Rollers rollers), DropToCenter.cmd(),
+         RobotCommands.intake(Rollers rollers), RobotCommands.stopIntake(Rollers rollers), CenterToUpperDrop.cmd(),
+         RobotCommands.outtake(Rollers rollers), UpperDropToUpperBalance.cmd()));
 
-  return routine;
-}
- */
+    return routine;
+  }
+   */
 }
