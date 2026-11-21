@@ -70,20 +70,20 @@ public class DriveConstants {
   // Device CAN IDs. Based off power port on PDH
   public static final int pigeonCanId = 20;
 
-  public static final int frontLeftDriveCanId = 3;
-  public static final int frontRightDriveCanId = 4; // It's in PDH port 1
-  public static final int backLeftDriveCanId = 19;
-  public static final int backRightDriveCanId = 13;
+  public static final int frontLeftDriveCanId = 23;
+  public static final int frontRightDriveCanId = 21; // It's in PDH port 1
+  public static final int backLeftDriveCanId = 23;
+  public static final int backRightDriveCanId = 22;
 
-  public static final int frontLeftTurnCanId = 8;
-  public static final int frontRightTurnCanId = 6;
-  public static final int backLeftTurnCanId = 13;
-  public static final int backRightTurnCanId = 17;
+  public static final int frontLeftTurnCanId = 41;
+  public static final int frontRightTurnCanId = 42;
+  public static final int backLeftTurnCanId = 43;
+  public static final int backRightTurnCanId = 44;
 
-  public static final int frontLeftTurnEncoderCanId = 19;
-  public static final int frontRightTurnEncoderCanId = 4;
-  public static final int backLeftTurnEncoderCanId = 18;
-  public static final int backRightTurnEncoderCanId = 5;
+  public static final int frontLeftTurnEncoderCanId = 34;
+  public static final int frontRightTurnEncoderCanId = 31;
+  public static final int backLeftTurnEncoderCanId = 32;
+  public static final int backRightTurnEncoderCanId = 33;
   public static final double wheelDiameter = Units.inchesToMeters(1.975);
 
   public static final String CANBusName = "rio";

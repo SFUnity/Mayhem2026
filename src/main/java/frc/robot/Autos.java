@@ -95,31 +95,31 @@ public class Autos {
   public Command getAutonomousCommand() {
     return isChoreoAuto ? chooser.selectedCommandScheduler() : nonChoreoChooser.get();
   }
-  /* 
-  public AutoRoutine LowerStartGrabCubeAndBalance() {
-    AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
-    AutoTrajectory LowerStartGrabCubeAndBalance =
-        routine.trajectory("LowerStartGrabCubeAndBalance");
-    routine
-        .active()
-        .onTrue(
-            Commands.sequence(
-                LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
-    return routine;
-  }
+  /*
+    public AutoRoutine LowerStartGrabCubeAndBalance() {
+      AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
+      AutoTrajectory LowerStartGrabCubeAndBalance =
+          routine.trajectory("LowerStartGrabCubeAndBalance");
+      routine
+          .active()
+          .onTrue(
+              Commands.sequence(
+                  LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
+      return routine;
+    }
 
-  public AutoRoutine LowerStartGrabCubeAndBalance() {
-    AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
-    AutoTrajectory LowerStartGrabCubeAndBalance =
-        routine.trajectory("LowerStartGrabCubeAndBalance");
-    routine
-        .active()
-        .onTrue(
-            Commands.sequence(
-                LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
-    return routine;
-  }
-*/
+    public AutoRoutine LowerStartGrabCubeAndBalance() {
+      AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
+      AutoTrajectory LowerStartGrabCubeAndBalance =
+          routine.trajectory("LowerStartGrabCubeAndBalance");
+      routine
+          .active()
+          .onTrue(
+              Commands.sequence(
+                  LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
+      return routine;
+    }
+  */
   public AutoRoutine LowerDoubleGrabCubeBalance() {
     AutoRoutine routine = factory.newRoutine("LowerDoubleGrabCubeBalance");
     AutoTrajectory LowerDoubleGrabCubeBalance = routine.trajectory("LowerDoubleGrabCubeBalance");
@@ -192,7 +192,7 @@ public class Autos {
     return routine;
   }
 
-    public AutoRoutine ExitSafezone() {
+  public AutoRoutine ExitSafezone() {
     AutoRoutine routine = factory.newRoutine("ExitSafezone");
     AutoTrajectory ExitSafezone = routine.trajectory("ExitSafezone");
     routine.active().onTrue(Commands.sequence(ExitSafezone.resetOdometry(), ExitSafezone.cmd()));
