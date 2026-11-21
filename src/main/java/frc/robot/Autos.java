@@ -53,13 +53,13 @@ public class Autos {
     /* Set up main choreo routines */
     chooser = new LoggedAutoChooser("/ChoreoChooser");
 
-    chooser.addRoutine("LowerStartGrabCubeAndBalance", this::LowerStartGrabCubeAndBalance);
-    chooser.addRoutine("LowerDoubleDrabCubeBalance", this::LowerDoubleGrabCubeBalance);
-    chooser.addRoutine("UpperStartGrabCubeBalance", this::UpperStartGrabCubeBalance);
-    chooser.addRoutine("PickupCubeOverBeam", this::PickupCubeOverBeam);
-    chooser.addRoutine("UpperExitBalance", this::UpperExitBalance);
-    chooser.addRoutine("LowerExitBalance", this::LowerExitBalance);
-    chooser.addRoutine("UpperDoubleGrab", this::UpperDoubleGrab);
+    //chooser.addRoutine("LowerStartGrabCubeAndBalance", this::LowerStartGrabCubeAndBalance);
+    //chooser.addRoutine("LowerDoubleDrabCubeBalance", this::LowerDoubleGrabCubeBalance);
+    //chooser.addRoutine("UpperStartGrabCubeBalance", this::UpperStartGrabCubeBalance);
+    //chooser.addRoutine("PickupCubeOverBeam", this::PickupCubeOverBeam);
+    //chooser.addRoutine("UpperExitBalance", this::UpperExitBalance);
+    //chooser.addRoutine("LowerExitBalance", this::LowerExitBalance);
+    //chooser.addRoutine("UpperDoubleGrab", this::UpperDoubleGrab);
     chooser.addRoutine("LowerBalance", this::LowerBalance);
     chooser.addRoutine("UpperBalance", this::UpperBalance);
     chooser.addRoutine("ExitSafezone", this::ExitSafezone);
