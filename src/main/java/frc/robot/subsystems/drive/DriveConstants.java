@@ -84,13 +84,14 @@ public class DriveConstants {
   public static final int frontRightTurnEncoderCanId = 4;
   public static final int backLeftTurnEncoderCanId = 18;
   public static final int backRightTurnEncoderCanId = 5;
+  public static final double wheelDiameter = Units.inchesToMeters(1.975);
 
   public static final String CANBusName = "rio";
 
   // Drive motor configuration
   public static final int driveMotorSupplyCurrentLimit = 50;
   public static final int driveMotorStatorCurrentLimit = 80;
-  public static final double wheelRadiusMeters = Units.inchesToMeters(2.193);
+  public static final double wheelRadiusMeters = Units.inchesToMeters(1.975);
   public static final double driveMotorReduction = 6.12;
   public static final DCMotor driveGearbox = DCMotor.getKrakenX60(1);
 
