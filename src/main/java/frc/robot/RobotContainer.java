@@ -32,6 +32,10 @@ import frc.robot.lib.BLine.FollowPath;
 import frc.robot.lib.BLine.Path;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.drive.DriveConstants.DriveCommandsConfig;
+import frc.robot.subsystems.pivot.Pivot;
+import frc.robot.subsystems.pivot.PivotIO;
+import frc.robot.subsystems.pivot.PivotIOSim;
+import frc.robot.subsystems.pivot.PivotIOTalonFX;
 import frc.robot.subsystems.drive.GyroIO;
 import frc.robot.subsystems.drive.GyroIOPigeon2;
 import frc.robot.subsystems.drive.ModuleIO;
@@ -61,6 +65,7 @@ public class RobotContainer {
   private final Drive drive;
   private final Vision vision;
   private final Rollers rollers;
+  private final Pivot pivot;
 
   // Non-subsystems
   private final Autos autos;
@@ -143,6 +148,7 @@ public class RobotContainer {
                 new VisionIOLimelight(portAft),
                 new VisionIOLimelight(starboardAft));
         rollers = new Rollers(new RollersIOTalonFX());
+        pivot = new Pivot(new PivotIOTalonFX());
         break;
 
       case SIM:
@@ -158,6 +164,7 @@ public class RobotContainer {
                 driveCommandsConfig);
         vision = new Vision(poseManager, new VisionIO() {});
         rollers = new Rollers(new RollersIOSim());
+        pivot = new Pivot(new PivotIOSim());
 
         // Register an intake to remove fuel from the field as a rectangular bounding box
         double minX = Units.inchesToMeters(17.049462);
@@ -179,6 +186,7 @@ public class RobotContainer {
                 driveCommandsConfig);
         vision = new Vision(poseManager, new VisionIO() {});
         rollers = new Rollers(new RollersIO() {});
+        pivot = new Pivot(new PivotIO() {});
         break;
     }
     autos = new Autos(drive, poseManager);
@@ -309,7 +317,13 @@ public class RobotContainer {
     controller.rightTrigger().onFalse(RobotCommands.stopIntake(rollers));
     controller.leftTrigger().onTrue(RobotCommands.outtake(rollers));
     controller.leftTrigger().onFalse(RobotCommands.stopIntake(rollers));
-     controller.rightBumper().onTrue(RobotCommands.(pivot));
+    
+    controller.rightBumper().onTrue(RobotCommands.pivotBackwardL1(pivot));
+    controller.rightBumper().onFalse(RobotCommands.pivotForwardL1(pivot));
+    controller.leftBumper().onTrue(RobotCommands.pivotBackwardL1(pivot));
+    controller.leftBumper().onFalse(RobotCommands.pivotBackwardL2(pivot));
+
+
     // Reset gyro to 0° when start or back button is pressed
     controller
         .start()
