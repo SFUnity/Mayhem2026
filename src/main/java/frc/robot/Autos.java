@@ -62,8 +62,8 @@ public class Autos {
     chooser.addRoutine("UpperExitBalance", this::UpperExitBalance);
     chooser.addRoutine("LowerExitBalance", this::LowerExitBalance);
     chooser.addRoutine("UpperDoubleGrab", this::UpperDoubleGrab);
-    chooser.addRoutine("LowerBalanceNOPRELOAD", this::LowerBalanceNOPRELOAD);
-    chooser.addRoutine("UpperBalanceNOPRELOAD", this::UpperBalanceNOPRELOAD);
+    chooser.addRoutine("LowerBalance", this::LowerBalance);
+    chooser.addRoutine("UpperBalance", this::UpperBalance);
     // chooser.addRoutine("UpperGrabOnceandBalanceWithCommands",
     // this::UpperGrabOnceandBalanceWithCommands);
 
@@ -145,20 +145,25 @@ public AutoRoutine LowerStartGrabCubeAndBalance() {
     return routine;
   }
 
-  public AutoRoutine LowerBalanceNOPRELOAD() {
-    AutoRoutine routine = factory.newRoutine("LowerBalanceNOPRELOAD");
-    AutoTrajectory LowerBalanceNOPRELOAD = routine.trajectory("LowerBalanceNOPRELOAD");
+  public AutoRoutine LowerBalance() {
+    AutoRoutine routine = factory.newRoutine("LowerBalance");
+    AutoTrajectory LowerBalance = routine.trajectory("LowerBalance");
+    routine
+    .active()
+   .onTrue(
+      Commands.sequence(
+         LowerBalance.resetOdometry(), LowerBalance.cmd()));
     return routine;
   }
 
-public AutoRoutine UpperBalanceNOPRELOAD() {
-  AutoRoutine routine = factory.newRoutine("UpperBalanceNOPRELOAD");
-  AutoTrajectory UpperBalanceNOPRELOAD = routine.trajectory("UpperBalanceNOPRELOAD");
+public AutoRoutine UpperBalance() {
+  AutoRoutine routine = factory.newRoutine("UpperBalance");
+  AutoTrajectory UpperBalance = routine.trajectory("UpperBalance");
   routine
   .active()
   .onTrue(
       Commands.sequence(
-         UpperBalanceNOPRELOAD.resetOdometry(), UpperBalanceNOPRELOAD.cmd()));
+         UpperBalance.resetOdometry(), UpperBalance.cmd()));
   return routine;
 
 }
