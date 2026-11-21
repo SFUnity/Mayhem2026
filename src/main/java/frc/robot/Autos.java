@@ -7,6 +7,7 @@ import choreo.trajectory.SwerveSample;
 import choreo.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
 import frc.robot.commands.DriveCommands;
 import frc.robot.subsystems.drive.Drive;
@@ -111,6 +112,11 @@ public class Autos {
 public AutoRoutine LowerStartGrabCubeAndBalance() {
   AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
   AutoTrajectory LowerStartGrabCubeAndBalance = routine.trajectory("LowerStartGrabCubeAndBalance");
+  routine
+  .active()
+  .onTrue(
+      Commands.sequence(
+         LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
   return routine;
   
 }
@@ -166,6 +172,11 @@ public AutoRoutine LowerBalanceNOPRELOAD() {
 public AutoRoutine UpperBalanceNOPRELOAD() {
   AutoRoutine routine = factory.newRoutine("UpperBalanceNOPRELOAD");
   AutoTrajectory UpperBalanceNOPRELOAD = routine.trajectory("UpperBalanceNOPRELOAD");
+  routine
+  .active()
+  .onTrue(
+      Commands.sequence(
+         UpperBalanceNOPRELOAD.resetOdometry(), UpperBalanceNOPRELOAD.cmd()));
   return routine;
 
 }
