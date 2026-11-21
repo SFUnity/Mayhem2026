@@ -5,8 +5,6 @@ import com.ctre.phoenix6.controls.NeutralOut;
 import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
 
-import frc.robot.subsystems.pivot.PivotConstants;
-
 public class RollersIOTalonFX implements RollersIO {
   private final TalonFX rollerTalonFX = new TalonFX(RollersConstants.rollerID);
   private final VoltageOut voltageOut = new VoltageOut(0.0).withEnableFOC(true);

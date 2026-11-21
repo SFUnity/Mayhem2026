@@ -28,17 +28,15 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.RobotCommands;
-import frc.robot.generated.TunerConstants;
 import frc.robot.lib.BLine.FollowPath;
 import frc.robot.lib.BLine.Path;
 import frc.robot.subsystems.drive.Drive;
-import frc.robot.subsystems.drive.DriveConstants;
 import frc.robot.subsystems.drive.DriveConstants.DriveCommandsConfig;
 import frc.robot.subsystems.drive.GyroIO;
 import frc.robot.subsystems.drive.GyroIOPigeon2;
 import frc.robot.subsystems.drive.ModuleIO;
-import frc.robot.subsystems.drive.ModuleIOSim;
 import frc.robot.subsystems.drive.ModuleIOMixed;
+import frc.robot.subsystems.drive.ModuleIOSim;
 import frc.robot.subsystems.rollers.Rollers;
 import frc.robot.subsystems.rollers.RollersIO;
 import frc.robot.subsystems.rollers.RollersIOSim;
@@ -47,7 +45,6 @@ import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.vision.VisionIO;
 import frc.robot.subsystems.vision.VisionIOLimelight;
 import frc.robot.util.FuelSim;
-import frc.robot.util.LoggedTunableNumber;
 import frc.robot.util.PoseManager;
 import frc.robot.util.ShiftHelpers;
 import org.littletonrobotics.junction.Logger;
@@ -99,9 +96,7 @@ public class RobotContainer {
   private final LoggedNetworkBoolean demoMode =
       new LoggedNetworkBoolean("Demo Mode Speed Limit", true);
 
-        private final DriveCommandsConfig driveCommandsConfig =
-      new DriveCommandsConfig(controller);
-
+  private final DriveCommandsConfig driveCommandsConfig = new DriveCommandsConfig(controller);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   @SuppressWarnings("resource")
@@ -137,7 +132,8 @@ public class RobotContainer {
                 new ModuleIOMixed(1),
                 new ModuleIOMixed(2),
                 new ModuleIOMixed(3),
-                poseManager, driveCommandsConfig);
+                poseManager,
+                driveCommandsConfig);
 
         // vision = new Vision(poseManager, new VisionIO() {});
         vision =
@@ -158,10 +154,10 @@ public class RobotContainer {
                 new ModuleIOSim(),
                 new ModuleIOSim(),
                 new ModuleIOSim(),
-                poseManager, driveCommandsConfig);
+                poseManager,
+                driveCommandsConfig);
         vision = new Vision(poseManager, new VisionIO() {});
         rollers = new Rollers(new RollersIOSim());
-
 
         // Register an intake to remove fuel from the field as a rectangular bounding box
         double minX = Units.inchesToMeters(17.049462);
@@ -179,7 +175,8 @@ public class RobotContainer {
                 new ModuleIO() {},
                 new ModuleIO() {},
                 new ModuleIO() {},
-                poseManager, driveCommandsConfig);
+                poseManager,
+                driveCommandsConfig);
         vision = new Vision(poseManager, new VisionIO() {});
         rollers = new Rollers(new RollersIO() {});
         break;
@@ -303,8 +300,7 @@ public class RobotContainer {
     //         () -> -controller.getRightX(),
     //         poseManager,
     //         () -> intakePivot.intakeDown()));
-    drive.setDefaultCommand(
-        drive.joystickDrive());
+    drive.setDefaultCommand(drive.joystickDrive());
 
     // Switch to X pattern when X button is pressed
     controller.x().onTrue(Commands.runOnce(drive::stopWithX, drive));

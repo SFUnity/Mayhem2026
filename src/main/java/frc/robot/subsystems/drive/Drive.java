@@ -45,10 +45,10 @@ import frc.robot.Constants;
 import frc.robot.Constants.Mode;
 import frc.robot.subsystems.drive.DriveConstants.DriveCommandsConfig;
 import frc.robot.util.AllianceFlipUtil;
+import frc.robot.util.GeneralUtil;
 import frc.robot.util.GeomUtil;
 import frc.robot.util.LoggedTunableNumber;
 import frc.robot.util.PoseManager;
-import frc.robot.util.GeneralUtil;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.LinkedList;
@@ -419,7 +419,6 @@ public class Drive extends SubsystemBase {
           // Apply deadband
           double omega = MathUtil.applyDeadband(o, DEADBAND);
 
-
           // Square values and scale to max velocity
           omega = Math.copySign(omega * omega, omega);
           omega *= maxAngularSpeedRadiansPerSec;
@@ -498,7 +497,6 @@ public class Drive extends SubsystemBase {
                   AllianceFlipUtil.shouldFlip()
                       ? poseManager.getRotation().plus(new Rotation2d(Math.PI))
                       : poseManager.getRotation()));
-
         })
         .beforeStarting(
             () -> {
@@ -572,7 +570,6 @@ public class Drive extends SubsystemBase {
                   thetaVelocity,
                   poseManager.getRotation()));
 
-
           Logger.recordOutput("Drive/Commands/Linear/currentDistance", currentDistance);
         })
         .beforeStarting(
@@ -617,8 +614,6 @@ public class Drive extends SubsystemBase {
     // Convert to doubles
     double x = config.getXInput();
     double y = config.getYInput();
-
-
 
     // Apply deadband
     double linearMagnitude = MathUtil.applyDeadband(Math.hypot(x, y), DEADBAND);
