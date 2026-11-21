@@ -61,6 +61,8 @@ public class Autos {
     chooser.addRoutine("UpperExitBalance", this::UpperExitBalance);
     chooser.addRoutine("LowerExitBalance", this::LowerExitBalance);
     chooser.addRoutine("UpperDoubleGrab", this::UpperDoubleGrab);
+    chooser.addRoutine("LowerBalanceNOPRELOAD", this::LowerBalanceNOPRELOAD);
+    chooser.addRoutine("UpperBalanceNOPRELOAD", this::UpperBalanceNOPRELOAD);
 
     // not as necessary
     // chooser.addRoutine("Climb", this::climbAutoRoutine);
@@ -153,4 +155,17 @@ public AutoRoutine UpperDoubleGrab() {
 
 }
 
+public AutoRoutine LowerBalanceNOPRELOAD() {
+  AutoRoutine routine = factory.newRoutine("LowerBalanceNOPRELOAD");
+  AutoTrajectory LowerBalanceNOPRELOAD = routine.trajectory("LowerBalanceNOPRELOAD");
+  return routine;
+
+}
+
+public AutoRoutine UpperBalanceNOPRELOAD() {
+  AutoRoutine routine = factory.newRoutine("UpperBalanceNOPRELOAD");
+  AutoTrajectory UpperBalanceNOPRELOAD = routine.trajectory("UpperBalanceNOPRELOAD");
+  return routine;
+
+}
 }
