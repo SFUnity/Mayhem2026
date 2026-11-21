@@ -63,6 +63,7 @@ public class Autos {
     chooser.addRoutine("UpperDoubleGrab", this::UpperDoubleGrab);
     chooser.addRoutine("LowerBalanceNOPRELOAD", this::LowerBalanceNOPRELOAD);
     chooser.addRoutine("UpperBalanceNOPRELOAD", this::UpperBalanceNOPRELOAD);
+    //chooser.addRoutine("UpperGrabOnceandBalanceWithCommands", this::UpperGrabOnceandBalanceWithCommands);
 
     // not as necessary
     // chooser.addRoutine("Climb", this::climbAutoRoutine);
@@ -168,4 +169,27 @@ public AutoRoutine UpperBalanceNOPRELOAD() {
   return routine;
 
 }
+/* No clue how to fix this, but they are separated paths so that the robot can stop to intake, 
+but I don't know how to robot works. If it can just run into blocks and intake like that, then we can use similar code
+to Claude and have it intake on checkpoints -> number checkpoints so we can use them 
+
+public AutoRoutine UpperGrabOnceandBalanceWithCommands() {
+  AutoRoutine routine = factory.newRoutine("UpperGrabOnceandBalanceWithCommands");
+
+  AutoTrajectory UpperToDrop = routine.trajectory("UpperToDrop");
+  AutoTrajectory DropToCenter = routine.trajectory("DropToCenter");
+  AutoTrajectory CenterToUpperDrop = routine.trajectory("CenterToUpperDrop");
+  AutoTrajectory UpperDropToUpperBalance = routine.trajectory("UpperDropToUpperBalance");
+
+   routine
+     .active()
+     .onTrue(
+     Commands.sequence(
+       UpperToDrop.resetOdometry(), UpperToDrop.cmd(), RobotCommands.outtake(Rollers rollers), DropToCenter.cmd(), 
+       RobotCommands.intake(Rollers rollers), RobotCommands.stopIntake(Rollers rollers), CenterToUpperDrop.cmd(),
+       RobotCommands.outtake(Rollers rollers), UpperDropToUpperBalance.cmd()));
+
+  return routine;
+}
+ */
 }
