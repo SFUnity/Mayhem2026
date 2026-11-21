@@ -1,5 +1,5 @@
 {
- "name":"LowerBalanceNOPRELOAD",
+ "name":"LowerBalance",
  "version":3,
  "snapshot":{
   "waypoints":[
