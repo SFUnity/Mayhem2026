@@ -8,8 +8,6 @@ import choreo.trajectory.Trajectory;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine;
-import frc.robot.commands.DriveCommands;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.util.LoggedAutoChooser;
 import frc.robot.util.PoseManager;
@@ -97,17 +95,17 @@ public class Autos {
     return isChoreoAuto ? chooser.selectedCommandScheduler() : nonChoreoChooser.get();
   }
 
-public AutoRoutine LowerStartGrabCubeAndBalance() {
-  AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
-  AutoTrajectory LowerStartGrabCubeAndBalance = routine.trajectory("LowerStartGrabCubeAndBalance");
-  routine
-  .active()
-  .onTrue(
-      Commands.sequence(
-         LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
-  return routine;
-  
-}
+  public AutoRoutine LowerStartGrabCubeAndBalance() {
+    AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
+    AutoTrajectory LowerStartGrabCubeAndBalance =
+        routine.trajectory("LowerStartGrabCubeAndBalance");
+    routine
+        .active()
+        .onTrue(
+            Commands.sequence(
+                LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
+    return routine;
+  }
 
   public AutoRoutine LowerDoubleGrabCubeBalance() {
     AutoRoutine routine = factory.newRoutine("LowerDoubleGrabCubeBalance");
@@ -148,46 +146,37 @@ public AutoRoutine LowerStartGrabCubeAndBalance() {
   public AutoRoutine LowerBalance() {
     AutoRoutine routine = factory.newRoutine("LowerBalance");
     AutoTrajectory LowerBalance = routine.trajectory("LowerBalance");
-    routine
-    .active()
-   .onTrue(
-      Commands.sequence(
-         LowerBalance.resetOdometry(), LowerBalance.cmd()));
+    routine.active().onTrue(Commands.sequence(LowerBalance.resetOdometry(), LowerBalance.cmd()));
     return routine;
   }
 
-public AutoRoutine UpperBalance() {
-  AutoRoutine routine = factory.newRoutine("UpperBalance");
-  AutoTrajectory UpperBalance = routine.trajectory("UpperBalance");
-  routine
-  .active()
-  .onTrue(
-      Commands.sequence(
-         UpperBalance.resetOdometry(), UpperBalance.cmd()));
-  return routine;
-
-}
-/* No clue how to fix this, but they are separated paths so that the robot can stop to intake, 
-but I don't know how to robot works. If it can just run into blocks and intake like that, then we can use similar code
-to Claude and have it intake on checkpoints -> number checkpoints so we can use them 
-
-  public AutoRoutine UpperGrabOnceandBalanceWithCommands() {
-    AutoRoutine routine = factory.newRoutine("UpperGrabOnceandBalanceWithCommands");
-
-    AutoTrajectory UpperToDrop = routine.trajectory("UpperToDrop");
-    AutoTrajectory DropToCenter = routine.trajectory("DropToCenter");
-    AutoTrajectory CenterToUpperDrop = routine.trajectory("CenterToUpperDrop");
-    AutoTrajectory UpperDropToUpperBalance = routine.trajectory("UpperDropToUpperBalance");
-
-     routine
-       .active()
-       .onTrue(
-       Commands.sequence(
-         UpperToDrop.resetOdometry(), UpperToDrop.cmd(), RobotCommands.outtake(Rollers rollers), DropToCenter.cmd(),
-         RobotCommands.intake(Rollers rollers), RobotCommands.stopIntake(Rollers rollers), CenterToUpperDrop.cmd(),
-         RobotCommands.outtake(Rollers rollers), UpperDropToUpperBalance.cmd()));
-
+  public AutoRoutine UpperBalance() {
+    AutoRoutine routine = factory.newRoutine("UpperBalance");
+    AutoTrajectory UpperBalance = routine.trajectory("UpperBalance");
+    routine.active().onTrue(Commands.sequence(UpperBalance.resetOdometry(), UpperBalance.cmd()));
     return routine;
   }
-   */
+  /* No clue how to fix this, but they are separated paths so that the robot can stop to intake,
+  but I don't know how to robot works. If it can just run into blocks and intake like that, then we can use similar code
+  to Claude and have it intake on checkpoints -> number checkpoints so we can use them
+
+    public AutoRoutine UpperGrabOnceandBalanceWithCommands() {
+      AutoRoutine routine = factory.newRoutine("UpperGrabOnceandBalanceWithCommands");
+
+      AutoTrajectory UpperToDrop = routine.trajectory("UpperToDrop");
+      AutoTrajectory DropToCenter = routine.trajectory("DropToCenter");
+      AutoTrajectory CenterToUpperDrop = routine.trajectory("CenterToUpperDrop");
+      AutoTrajectory UpperDropToUpperBalance = routine.trajectory("UpperDropToUpperBalance");
+
+       routine
+         .active()
+         .onTrue(
+         Commands.sequence(
+           UpperToDrop.resetOdometry(), UpperToDrop.cmd(), RobotCommands.outtake(Rollers rollers), DropToCenter.cmd(),
+           RobotCommands.intake(Rollers rollers), RobotCommands.stopIntake(Rollers rollers), CenterToUpperDrop.cmd(),
+           RobotCommands.outtake(Rollers rollers), UpperDropToUpperBalance.cmd()));
+
+      return routine;
+    }
+     */
 }

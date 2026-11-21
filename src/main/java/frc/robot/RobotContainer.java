@@ -63,7 +63,7 @@ public class RobotContainer {
   private final Rollers rollers;
 
   // Non-subsystems
-  // private final Autos autos;
+  private final Autos autos;
   private final PoseManager poseManager = new PoseManager();
   public final FuelSim fuelSim = new FuelSim("FuelSim");
 
@@ -181,6 +181,7 @@ public class RobotContainer {
         rollers = new Rollers(new RollersIO() {});
         break;
     }
+    autos = new Autos(drive, poseManager);
 
     // autos =
     //     new Autos(
@@ -338,8 +339,7 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  // public Command getAutonomousCommand() {
-  //   return autos.getAutonomousCommand();
-  // }
-
+  public Command getAutonomousCommand() {
+    return autos.getAutonomousCommand();
+  }
 }
