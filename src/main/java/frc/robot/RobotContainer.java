@@ -32,15 +32,15 @@ import frc.robot.lib.BLine.FollowPath;
 import frc.robot.lib.BLine.Path;
 import frc.robot.subsystems.drive.Drive;
 import frc.robot.subsystems.drive.DriveConstants.DriveCommandsConfig;
-import frc.robot.subsystems.pivot.Pivot;
-import frc.robot.subsystems.pivot.PivotIO;
-import frc.robot.subsystems.pivot.PivotIOSim;
-import frc.robot.subsystems.pivot.PivotIOTalonFX;
 import frc.robot.subsystems.drive.GyroIO;
 import frc.robot.subsystems.drive.GyroIOPigeon2;
 import frc.robot.subsystems.drive.ModuleIO;
 import frc.robot.subsystems.drive.ModuleIOMixed;
 import frc.robot.subsystems.drive.ModuleIOSim;
+import frc.robot.subsystems.pivot.Pivot;
+import frc.robot.subsystems.pivot.PivotIO;
+import frc.robot.subsystems.pivot.PivotIOSim;
+import frc.robot.subsystems.pivot.PivotIOTalonFX;
 import frc.robot.subsystems.rollers.Rollers;
 import frc.robot.subsystems.rollers.RollersIO;
 import frc.robot.subsystems.rollers.RollersIOSim;
@@ -317,12 +317,11 @@ public class RobotContainer {
     controller.rightTrigger().onFalse(RobotCommands.stopIntake(rollers));
     controller.leftTrigger().onTrue(RobotCommands.outtake(rollers));
     controller.leftTrigger().onFalse(RobotCommands.stopIntake(rollers));
-    
+    // test and adjust!!
     controller.rightBumper().onTrue(RobotCommands.pivotBackwardL1(pivot));
-    controller.rightBumper().onFalse(RobotCommands.pivotForwardL1(pivot));
-    controller.leftBumper().onTrue(RobotCommands.pivotBackwardL1(pivot));
-    controller.leftBumper().onFalse(RobotCommands.pivotBackwardL2(pivot));
-
+    controller.rightBumper().onFalse(RobotCommands.pivotBackwardL2(pivot));
+    controller.leftBumper().onTrue(RobotCommands.pivotForwardL2(pivot));
+    controller.leftBumper().onFalse(RobotCommands.pivotBackwardL1(pivot));
 
     // Reset gyro to 0° when start or back button is pressed
     controller

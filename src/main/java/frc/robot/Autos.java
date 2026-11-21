@@ -95,88 +95,88 @@ public class Autos {
   public Command getAutonomousCommand() {
     return isChoreoAuto ? chooser.selectedCommandScheduler() : nonChoreoChooser.get();
   }
-  /*
-    public AutoRoutine LowerStartGrabCubeAndBalance() {
-      AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
-      AutoTrajectory LowerStartGrabCubeAndBalance =
-          routine.trajectory("LowerStartGrabCubeAndBalance");
-      routine
-          .active()
-          .onTrue(
-              Commands.sequence(
-                  LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
-      return routine;
-    }
+  
+  // public AutoRoutine LowerStartGrabCubeAndBalance() {
+  //   AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
+  //   AutoTrajectory LowerStartGrabCubeAndBalance =
+  //       routine.trajectory("LowerStartGrabCubeAndBalance");
+  //   routine
+  //       .active()
+  //       .onTrue(
+  //           Commands.sequence(
+  //               LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
+  //   return routine;
+  // }
 
-    public AutoRoutine LowerStartGrabCubeAndBalance() {
-      AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
-      AutoTrajectory LowerStartGrabCubeAndBalance =
-          routine.trajectory("LowerStartGrabCubeAndBalance");
-      routine
-          .active()
-          .onTrue(
-              Commands.sequence(
-                  LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
-      return routine;
-    }
-  */
-  public AutoRoutine LowerDoubleGrabCubeBalance() {
-    AutoRoutine routine = factory.newRoutine("LowerDoubleGrabCubeBalance");
-    AutoTrajectory LowerDoubleGrabCubeBalance = routine.trajectory("LowerDoubleGrabCubeBalance");
-    routine
-        .active()
-        .onTrue(
-            Commands.sequence(
-                LowerDoubleGrabCubeBalance.resetOdometry(), LowerDoubleGrabCubeBalance.cmd()));
-    return routine;
-  }
+  // public AutoRoutine LowerStartGrabCubeAndBalance() {
+  //   AutoRoutine routine = factory.newRoutine("LowerStartGrabCubeAndBalance");
+  //   AutoTrajectory LowerStartGrabCubeAndBalance =
+  //       routine.trajectory("LowerStartGrabCubeAndBalance");
+  //   routine
+  //       .active()
+  //       .onTrue(
+  //           Commands.sequence(
+  //               LowerStartGrabCubeAndBalance.resetOdometry(), LowerStartGrabCubeAndBalance.cmd()));
+  //   return routine;
+  // }
 
-  public AutoRoutine UpperStartGrabCubeBalance() {
-    AutoRoutine routine = factory.newRoutine("UpperStartGrabCubeBalance");
-    AutoTrajectory UpperStartGrabCubeBalance = routine.trajectory("UpperStartGrabCubeBalance");
-    routine
-        .active()
-        .onTrue(
-            Commands.sequence(
-                UpperStartGrabCubeBalance.resetOdometry(), UpperStartGrabCubeBalance.cmd()));
-    return routine;
-  }
+  // public AutoRoutine LowerDoubleGrabCubeBalance() {
+  //   AutoRoutine routine = factory.newRoutine("LowerDoubleGrabCubeBalance");
+  //   AutoTrajectory LowerDoubleGrabCubeBalance = routine.trajectory("LowerDoubleGrabCubeBalance");
+  //   routine
+  //       .active()
+  //       .onTrue(
+  //           Commands.sequence(
+  //               LowerDoubleGrabCubeBalance.resetOdometry(), LowerDoubleGrabCubeBalance.cmd()));
+  //   return routine;
+  // }
 
-  public AutoRoutine PickupCubeOverBeam() {
-    AutoRoutine routine = factory.newRoutine("PickupCubeOverBeam");
-    AutoTrajectory PickupCubeOverBeam = routine.trajectory("PickupCubeOverBeam");
-    routine
-        .active()
-        .onTrue(Commands.sequence(PickupCubeOverBeam.resetOdometry(), PickupCubeOverBeam.cmd()));
-    return routine;
-  }
+  // public AutoRoutine UpperStartGrabCubeBalance() {
+  //   AutoRoutine routine = factory.newRoutine("UpperStartGrabCubeBalance");
+  //   AutoTrajectory UpperStartGrabCubeBalance = routine.trajectory("UpperStartGrabCubeBalance");
+  //   routine
+  //       .active()
+  //       .onTrue(
+  //           Commands.sequence(
+  //               UpperStartGrabCubeBalance.resetOdometry(), UpperStartGrabCubeBalance.cmd()));
+  //   return routine;
+  // }
 
-  public AutoRoutine UpperExitBalance() {
-    AutoRoutine routine = factory.newRoutine("UpperExitBalance");
-    AutoTrajectory UpperExitBalance = routine.trajectory("UpperExitBalance");
-    routine
-        .active()
-        .onTrue(Commands.sequence(UpperExitBalance.resetOdometry(), UpperExitBalance.cmd()));
-    return routine;
-  }
+  // public AutoRoutine PickupCubeOverBeam() {
+  //   AutoRoutine routine = factory.newRoutine("PickupCubeOverBeam");
+  //   AutoTrajectory PickupCubeOverBeam = routine.trajectory("PickupCubeOverBeam");
+  //   routine
+  //       .active()
+  //       .onTrue(Commands.sequence(PickupCubeOverBeam.resetOdometry(), PickupCubeOverBeam.cmd()));
+  //   return routine;
+  // }
 
-  public AutoRoutine LowerExitBalance() {
-    AutoRoutine routine = factory.newRoutine("LowerExitBalance");
-    AutoTrajectory LowerExitBalance = routine.trajectory("LowerExitBalance");
-    routine
-        .active()
-        .onTrue(Commands.sequence(LowerExitBalance.resetOdometry(), LowerExitBalance.cmd()));
-    return routine;
-  }
+  // public AutoRoutine UpperExitBalance() {
+  //   AutoRoutine routine = factory.newRoutine("UpperExitBalance");
+  //   AutoTrajectory UpperExitBalance = routine.trajectory("UpperExitBalance");
+  //   routine
+  //       .active()
+  //       .onTrue(Commands.sequence(UpperExitBalance.resetOdometry(), UpperExitBalance.cmd()));
+  //   return routine;
+  // }
 
-  public AutoRoutine UpperDoubleGrab() {
-    AutoRoutine routine = factory.newRoutine("UpperDoubleGrab");
-    AutoTrajectory UpperDoubleGrab = routine.trajectory("UpperDoubleGrab");
-    routine
-        .active()
-        .onTrue(Commands.sequence(UpperDoubleGrab.resetOdometry(), UpperDoubleGrab.cmd()));
-    return routine;
-  }
+  // public AutoRoutine LowerExitBalance() {
+  //   AutoRoutine routine = factory.newRoutine("LowerExitBalance");
+  //   AutoTrajectory LowerExitBalance = routine.trajectory("LowerExitBalance");
+  //   routine
+  //       .active()
+  //       .onTrue(Commands.sequence(LowerExitBalance.resetOdometry(), LowerExitBalance.cmd()));
+  //   return routine;
+  // }
+
+  // public AutoRoutine UpperDoubleGrab() {
+  //   AutoRoutine routine = factory.newRoutine("UpperDoubleGrab");
+  //   AutoTrajectory UpperDoubleGrab = routine.trajectory("UpperDoubleGrab");
+  //   routine
+  //       .active()
+  //       .onTrue(Commands.sequence(UpperDoubleGrab.resetOdometry(), UpperDoubleGrab.cmd()));
+  //   return routine;
+  // }
 
   public AutoRoutine LowerBalance() {
     AutoRoutine routine = factory.newRoutine("LowerBalance");

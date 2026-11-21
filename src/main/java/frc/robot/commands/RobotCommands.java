@@ -25,20 +25,19 @@ public class RobotCommands {
     return runOnce(() -> pivot.setState(PivotState.B_L1), pivot);
   }
 
-   public static Command pivotBackwardL2(Pivot pivot) {
+  public static Command pivotBackwardL2(Pivot pivot) {
     return runOnce(() -> pivot.setState(PivotState.B_L2), pivot);
   }
 
-   public static Command pivotForwardL1(Pivot pivot) {
+  public static Command pivotForwardL1(Pivot pivot) {
     return runOnce(() -> pivot.setState(PivotState.F_L1), pivot);
   }
 
- public static Command pivotForwardL2(Pivot pivot) {
+  public static Command pivotForwardL2(Pivot pivot) {
     return runOnce(() -> pivot.setState(PivotState.F_L2), pivot);
   }
 
-public static Command pivotForwardDown(Pivot pivot) {
-  return runOnce(() -> pivot.setState(PivotState.F_DOWN), pivot);
-}
-
+  public static Command pivotForwardDown(Pivot pivot) {
+    return runOnce(() -> pivot.setState(PivotState.F_DOWN), pivot);
+  }
 }
